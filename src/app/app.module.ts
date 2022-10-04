@@ -16,6 +16,9 @@ import {ListOmnithequesComponent} from "./components/omnitheque-components/list-
 import { SideBareOmnithequeComponent } from './components/omnitheque-components/side-bare-omnitheque/side-bare-omnitheque.component';
 import { ListProductComponent } from './components/product-component/list-product/list-product.component';
 import { UpdateOmnithequeComponent } from './components/omnitheque-components/update-omnitheque/update-omnitheque.component';
+import { CreateProductComponent } from './components/product-component/create-product/create-product.component';
+import { UpdateProductComponent } from './components/product-component/update-product/update-product.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { UpdateOmnithequeComponent } from './components/omnitheque-components/up
     SideBareOmnithequeComponent,
     ListProductComponent,
     UpdateOmnithequeComponent,
+    CreateProductComponent,
+    UpdateProductComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
