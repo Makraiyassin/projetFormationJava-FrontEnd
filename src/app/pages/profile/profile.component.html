@@ -1,1 +1,10 @@
-<p>profile works!</p>
+<div class="row">
+  <div class="col-lg-3 responsive-noDisplay">
+<!--    <app-profile-side-bar [user]="user"></app-profile-side-bar>-->
+    <app-side-bare-profile></app-side-bare-profile>
+  </div>
+  <div  class="margin-top-2 col-lg-9 col-md-12 mx-auto">
+<!--    <app-profile-info [user]="user"></app-profile-info>-->
+    <router-outlet></router-outlet>
+  </div>
+</div>

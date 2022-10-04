@@ -1,0 +1,70 @@
+<h1 class="text-center">Créer un compte</h1>
+<form class="w-50 mx-auto" [formGroup]="registerForm" >
+  <div  class="mb-3">
+    <label for="firstName" class="form-label">Prénom</label>
+    <input formControlName="firstName" type="text" class="form-control" id="firstName">
+    <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+  <div  class="mb-3">
+    <label for="lastName" class="form-label">Nom</label>
+    <input formControlName="lastName" type="text" class="form-control" id="lastName">
+    <!--    <div id="erreur_lastName" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+  <div  class="mb-3">
+    <label for="birthdate" class="form-label">Date de naissance</label>
+
+    <!--TODO : calcul birthdate min (ojd - 110 ans) max (ojd - 7ans)-->
+    <input formControlName="birthdate" type="date" min="1912-01-01" max="2020-12-31" class="form-control" id="birthdate">
+    <!--    <div id="erreur_birthdate" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+
+  <div id="address" class="row g-3" formGroupName="address">
+    <div class="col-9">
+      <label for="street" class="form-label">Addresse</label>
+      <input formControlName="street" type="text" class="form-control" id="street" placeholder="rue">
+    </div>
+    <div class="col-3">
+      <label for="number" class="form-label">  Numéro </label>
+      <input formControlName="number" type="text" class="form-control" id="number" placeholder="n°">
+    </div>
+
+    <div class="col-md-6">
+      <label for="city" class="form-label">Ville</label>
+      <input formControlName="city" type="text" class="form-control" id="city">
+    </div>
+    <div class="col-md-2">
+      <label for="cp" class="form-label">Code postal</label>
+      <input  formControlName="cp" type="number" class="form-control" id="cp">
+    </div>
+    <div class="col-md-4">
+      <label for="country" class="form-label">Pays</label>
+      <select  formControlName="country" id="country" class="form-select">
+        <option value="Belgique" selected> Belgique </option>
+        <option value="France"> France </option>
+      </select>
+    </div>
+  </div>
+
+  <div  class="mb-3">
+    <label for="phone" class="form-label">numero de téléphone</label>
+    <input formControlName="phone" type="text" class="form-control" id="phone">
+    <!--    <div id="erreur_phone" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+  <div  class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input formControlName="email" type="email" class="form-control" id="email">
+    <div *ngIf="!formValide &&!registerForm.controls.email.valid " id="erreur_email" class="form-text text-danger">l'email est invalid</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Mot de pass</label>
+    <input formControlName="password" type="password" class="form-control" id="password">
+    <!--    <div id="erreur_password" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+  <div class="mb-3">
+    <label for="confirmPassword" class="form-label">Confirmer mot de pass</label>
+    <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword">
+    <div *ngIf="registerForm.controls.confirmPassword.getError('noMatch')" id="erreur_password" class="form-text text-danger">les mot de pass ne correspondent pas</div>
+  </div>
+  <button (click)="register()" class="btn btn-primary">s'enregistrer</button>
+</form>
