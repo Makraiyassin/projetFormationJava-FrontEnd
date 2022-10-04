@@ -1,0 +1,50 @@
+<h1 class="text-center">modifier mon omnithèque</h1>
+<form class="w-50 mx-auto" [formGroup]="omnithequeForm" >
+  <div  class="mb-3">
+    <label for="name" class="form-label">nom de l'omnithèque</label>
+    <input formControlName="name" type="text" class="form-control" id="name">
+    <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+
+  <div id="address" class="row g-3" [formGroup]="addressForm">
+    <div class="col-9">
+      <label for="street" class="form-label">Addresse</label>
+      <input formControlName="street" type="text" class="form-control" id="street" placeholder="rue">
+    </div>
+    <div class="col-3">
+      <label for="number" class="form-label">  Numéro </label>
+      <input formControlName="number" type="number" class="form-control" id="number" placeholder="n°" >
+    </div>
+
+    <div class="col-md-6">
+      <label for="city" class="form-label">Ville</label>
+      <input formControlName="city" type="text" class="form-control" id="city">
+    </div>
+    <div class="col-md-2">
+      <label for="cp" class="form-label">Code postal</label>
+      <input  formControlName="cp" type="number" class="form-control" id="cp">
+    </div>
+    <div class="col-md-4">
+      <label for="country" class="form-label">Pays</label>
+      <select  formControlName="country" id="country" class="form-select">
+        <option value="Belgique" selected> Belgique </option>
+        <option value="France"> France </option>
+      </select>
+    </div>
+  </div>
+
+  <div  class="mb-3">
+    <label for="phone" class="form-label">numero de téléphone de l'omnitheque</label>
+    <input formControlName="phone" type="text" class="form-control" id="phone">
+    <!--    <div id="erreur_phone" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+  <div  class="mb-3">
+    <label for="email" class="form-label">Email de l'omnitheque</label>
+    <input formControlName="email" type="email" class="form-control" id="email">
+    <!--    <div id="erreur_email" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+
+  <button (click)="update()" class="btn btn-primary margin-right-2">modifier</button>
+  <button (click)="cancel()" class="btn btn-primary">annuler</button>
+</form>
+

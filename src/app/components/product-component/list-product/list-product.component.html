@@ -1,0 +1,98 @@
+
+<div class="responsive-Display">
+  <ul>
+    <li><a>Actualité</a></li>
+    <li><a>Catalogue</a></li>
+    <li><a>à propos de nous</a></li>
+    <li *ngIf="omnitheque && user?.omnitheque">
+      <a *ngIf="omnitheque.id == user.omnitheque.id"routerLink="/omnitheque/update">modifier infos</a>
+    </li>
+  </ul>
+</div>
+
+
+<div *ngIf="omnitheque?.id == user?.omnitheque?.id" class="container justify-content-center">
+  <a  routerLink="/omnitheque/product/create" class="btn btn-outline-primary">ajouter un produit</a>
+</div>
+
+<div *ngIf="products">
+
+  <div *ngIf="products.length>0">
+    <table   class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">image </th>
+        <th scope="col">Nom </th>
+        <th scope="col">Categorie</th>
+        <th scope="col">description</th>
+        <th *ngIf="user && user.omnitheque && omnitheque.id == user.omnitheque.id" scope="col">Examplaires</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products ">
+        <ng-container *ngIf="product.quantity">
+          <th scope="row"><img src="https://picsum.photos/75"></th>
+          <td>{{ product.name }}</td>
+          <td> {{product.category}} </td>
+          <td>{{ product.description}}</td>
+          <td *ngIf=" omnitheque.id == user?.omnitheque?.id"  class="text-center">{{ product.quantity}}</td>
+          <td>
+            <button *ngIf=" omnitheque.id != user?.omnitheque?.id"  class="btn btn-primary">emprunter</button>
+            <a *ngIf="user && user.omnitheque && omnitheque.id == user.omnitheque.id"  routerLink="/product/update/{{product.id}}" class="btn btn-primary margin-right-2">éditer</a>
+            <button *ngIf=" omnitheque.id == user?.omnitheque?.id"  (click)="delete(product.id)" class="btn btn-primary">supprimer</button>
+          </td>
+        </ng-container>
+      </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshProducts()">
+      </ngb-pagination>
+
+      <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshProducts()">
+        <option [ngValue]="5" selected>5 produits par page</option>
+        <option [ngValue]="10">10 produits par page</option>
+        <option [ngValue]="20">20 produits par page</option>
+      </select>
+    </div>
+
+  </div>
+
+  <h2  *ngIf="products.length < 1">liste de produits est vide</h2>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div *ngIf="omnitheque.productList.length>0" class="container">-->
+<!--  <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4">-->
+<!--    <div-->
+<!--      *ngFor="let product of omnitheque.productList"-->
+<!--      class="col"-->
+<!--    >-->
+<!--      <div class="card">-->
+<!--        <img class="card-img-top" src="https://picsum.photos/200/200"/>-->
+<!--        <div class="card-body">-->
+<!--          <h5 class="card-title">{{product.name}}</h5>-->
+<!--          <p class="card-text text-center fw-bold">description</p>-->
+<!--          <p class="card-text text-center">blablabla</p>-->
+<!--          <p class="card-text text-center">categorie: "{{product.category}}"</p>-->
+<!--          <button routerLink="/">emprunter</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

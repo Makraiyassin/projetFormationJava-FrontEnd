@@ -1,0 +1,33 @@
+<div class="container">
+  <div *ngIf="omnithequeList" class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4">
+    <div
+      *ngFor="let omnitheque of omnitheques"
+      class="col"
+    >
+      <div class="card">
+        <img class="card-img-top" src="https://picsum.photos/200/200"/>
+        <div class="card-body">
+          <h5 class="card-title">{{omnitheque.name}}</h5>
+          <p class="card-text text-center fw-bold">contact</p>
+          <p class="card-text text-center">✉ {{omnitheque.email}}</p>
+          <p class="card-text text-center">☎ {{omnitheque.phone}}</p>
+          <p class="card-text text-center">
+            🏠 {{omnitheque.address.street}} n°{{omnitheque.address.number}},{{omnitheque.address.cp}} {{omnitheque.address.city}}
+          </p>
+          <button routerLink="/omnitheque/{{omnitheque.id}}">Visiter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="collectionSize" class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshOmnitheques()">
+    </ngb-pagination>
+
+    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshOmnitheques()">
+      <option [ngValue]="4">4 Omnitheques par page</option>
+      <option [ngValue]="8">8 Omnitheques par page</option>
+      <option [ngValue]="16">16 Omnitheques par page</option>
+      <option [ngValue]="32">32 Omnitheques par page</option>
+    </select>
+  </div>
+</div>
