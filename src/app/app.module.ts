@@ -23,7 +23,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SideBareProfileComponent } from './components/profile-components/side-bare-profile/side-bare-profile.component';
 import { InfosProfileComponent } from './components/profile-components/infos-profile/infos-profile.component';
 import { CreateOmnithequeComponent } from './components/omnitheque-components/create-omnitheque/create-omnitheque.component';
-import { BorrowUserComponent } from './components/borrow-user/borrow-user.component';
+import { ProfileListBorrowComponent } from './components/borrow-components/profile-list-borrow/profile-list-borrow.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { BorrowUserComponent } from './components/borrow-user/borrow-user.compon
     SideBareProfileComponent,
     InfosProfileComponent,
     CreateOmnithequeComponent,
-    BorrowUserComponent,
+    ProfileListBorrowComponent,
   ],
   imports: [
     BrowserModule,

@@ -38,7 +38,7 @@
           <td>{{ product.description}}</td>
           <td *ngIf=" omnitheque.id == user?.omnitheque?.id"  class="text-center">{{ product.quantity}}</td>
           <td>
-            <button *ngIf=" omnitheque.id != user?.omnitheque?.id"  class="btn btn-primary">emprunter</button>
+            <button *ngIf=" omnitheque.id != user?.omnitheque?.id" (click)="borrow(product.id)" class="btn btn-primary">emprunter</button>
             <a *ngIf="user && user.omnitheque && omnitheque.id == user.omnitheque.id"  routerLink="update/{{product.id}}" class="btn btn-primary margin-right-2">éditer</a>
             <button *ngIf=" omnitheque.id == user?.omnitheque?.id"  (click)="delete(product.id)" class="btn btn-primary">supprimer</button>
           </td>
@@ -61,38 +61,3 @@
 
   <h2  *ngIf="products.length < 1">liste de produits est vide</h2>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div *ngIf="omnitheque.productList.length>0" class="container">-->
-<!--  <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4">-->
-<!--    <div-->
-<!--      *ngFor="let product of omnitheque.productList"-->
-<!--      class="col"-->
-<!--    >-->
-<!--      <div class="card">-->
-<!--        <img class="card-img-top" src="https://picsum.photos/200/200"/>-->
-<!--        <div class="card-body">-->
-<!--          <h5 class="card-title">{{product.name}}</h5>-->
-<!--          <p class="card-text text-center fw-bold">description</p>-->
-<!--          <p class="card-text text-center">blablabla</p>-->
-<!--          <p class="card-text text-center">categorie: "{{product.category}}"</p>-->
-<!--          <button routerLink="/">emprunter</button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->

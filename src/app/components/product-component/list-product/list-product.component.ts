@@ -7,6 +7,7 @@ import {UserService} from "../../../services/user.service";
 import {ActivatedRoute} from "@angular/router";
 import {IProduct} from "../../../models/IProduct";
 import {ProductService} from "../../../services/product.service";
+import {BorrowService} from "../../../services/borrow.service";
 
 @Component({
   selector: 'app-list-product',
@@ -14,21 +15,22 @@ import {ProductService} from "../../../services/product.service";
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit {
-  omnitheque!: IOmnitheque;
-  user!: IUser;
 
   constructor(
     private _omnithequeService : OmnithequeService,
     private _userService : UserService,
     private _route: ActivatedRoute,
     private _productService : ProductService,
-
+    private _borrowService: BorrowService
   ) { }
+
+  omnitheque!: IOmnitheque;
+  user!: IUser;
+  products !: IProduct[];
 
   page = 1;
   pageSize = 5;
   collectionSize !: number;
-  products !: IProduct[];
 
   ngOnInit(): void {
     this._userService.getUser().subscribe(data => {
@@ -43,13 +45,25 @@ export class ListProductComponent implements OnInit {
   }
 
   refreshProducts() {
-    this.products = this.omnitheque.productList.filter(p=>p.quantity>0).slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize)
+    this.products = this.omnitheque.productList.filter(p=>p.quantity>0).slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
   }
 
   delete(id : number){
     this._productService.delete(id).subscribe(data=>{
-      this.products = this.products.filter(p=>p.id != data.id)
+      this.products = this.products.filter(p=>p.id != data.id);
     });
+  }
+
+  borrow(productId : number ){
+    this._borrowService.create(this.omnitheque.id,productId).subscribe(
+      result => {
+        // Handle result
+        console.log(result)
+      },
+      error => {
+        console.log(error.error.message)
+      },
+    );
   }
 
 }
