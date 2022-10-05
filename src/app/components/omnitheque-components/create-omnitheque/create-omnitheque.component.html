@@ -1,4 +1,4 @@
-<h1 class="text-center">modifier mon omnithèque</h1>
+<h1 class="text-center">Créer mon omnithèque</h1>
 <form class="w-50 mx-auto" [formGroup]="omnithequeForm" >
   <div  class="mb-3">
     <label for="name" class="form-label">nom de l'omnithèque</label>
@@ -44,7 +44,5 @@
     <!--    <div id="erreur_email" class="form-text text-danger">test d'erreur</div>-->
   </div>
 
-  <button (click)="update()" class="btn btn-primary margin-right-2">modifier</button>
-  <button (click)="cancel()" class="btn btn-primary">annuler</button>
+  <button (click)="create()" class="btn btn-primary">créer</button>
 </form>
-

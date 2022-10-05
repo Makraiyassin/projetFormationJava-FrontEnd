@@ -11,8 +11,10 @@ const routes: Routes = [
     { path: "products", component: ListProductComponent },
     { path: "", component: ListProductComponent },
     { path: "update", component: UpdateOmnithequeComponent },
-    { path: "product/create", component: CreateProductComponent },
-    {path:"product/update/:id", component: UpdateProductComponent},
+    { path: "products/create", component: CreateProductComponent },
+    { path: "create", component: CreateProductComponent },
+    {path:"products/update/:id", component: UpdateProductComponent},
+    {path:"update/:id", component: UpdateProductComponent},
   ]
 }];
 
