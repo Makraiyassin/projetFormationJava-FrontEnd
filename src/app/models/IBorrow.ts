@@ -3,7 +3,7 @@ export interface IBorrow {
   startBorrow: string;
   endBorrow: string;
   returned: boolean;
-  productId: string;
+  productId: number;
   userId: number;
   omnithequeId: number;
 }

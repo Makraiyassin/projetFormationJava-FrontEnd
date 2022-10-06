@@ -30,7 +30,6 @@ export class SideBareOmnithequeComponent implements OnInit {
     this._omnithequeService.getOne(this._route.snapshot.params["id"]).subscribe(data => {
       this.omnitheque = data;
     })
-    console.log(this._route.snapshot.url)
   }
 
 }

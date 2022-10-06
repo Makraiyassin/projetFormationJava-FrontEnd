@@ -38,9 +38,15 @@
           <td>{{ product.description}}</td>
           <td *ngIf=" omnitheque.id == user?.omnitheque?.id"  class="text-center">{{ product.quantity}}</td>
           <td>
-            <button *ngIf=" omnitheque.id != user?.omnitheque?.id" (click)="borrow(product.id)" class="btn btn-primary">emprunter</button>
-            <a *ngIf="user && user.omnitheque && omnitheque.id == user.omnitheque.id"  routerLink="update/{{product.id}}" class="btn btn-primary margin-right-2">éditer</a>
-            <button *ngIf=" omnitheque.id == user?.omnitheque?.id"  (click)="delete(product.id)" class="btn btn-primary">supprimer</button>
+            <ng-container *ngIf=" omnitheque.id != user?.omnitheque?.id">
+              <a *ngIf="checkBorrow(product.id)" (click)="borrow(product.id)" class="btn btn-primary">emprunter</a>
+              <a *ngIf="!checkBorrow(product.id)" routerLink="/profile/borrows" class="text-success">emprunt en cours</a>
+            </ng-container>
+            <ng-container *ngIf="omnitheque.id == user?.omnitheque?.id" >
+              <a  routerLink="update/{{product.id}}" class="btn btn-primary margin-right-2">éditer</a>
+              <button (click)="delete(product.id)" class="btn btn-primary">supprimer</button>
+            </ng-container>
+
           </td>
         </ng-container>
       </tr>

@@ -6,11 +6,6 @@
     <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
   </div>
   <div  class="mb-3">
-    <label for="name" class="form-label">TODO SELECT</label>
-    <input formControlName="category" type="text" class="form-control" id="category">
-    <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
-  </div>
-  <div  class="mb-3">
     <label for="name" class="form-label">description</label>
     <input formControlName="description" type="text" class="form-control" id="description">
     <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
@@ -19,6 +14,12 @@
     <label for="name" class="form-label">nombre d'exemplaires</label>
     <input formControlName="quantity" type="number" class="form-control" id="quantity">
     <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+  <div  class="mb-3">
+    <label for="name" class="form-label">Categorie</label>
+    <select formControlName="category" type="text" class="form-select" id="category">
+      <option *ngFor="let category of categories" value="{{category}}"> {{category.toLowerCase()}} </option>
+    </select>
   </div>
 
   <button (click)="edit()" class="btn btn-primary">éditer</button>

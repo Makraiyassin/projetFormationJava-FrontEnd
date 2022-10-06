@@ -50,21 +50,27 @@ export class ListProductOmnithequeComponent implements OnInit {
   }
 
   delete(id : number){
-    this._productService.delete(id).subscribe(data=>{
-      this.products = this.products.filter(p=>p.id != data.id);
-    });
+    if(confirm("êtes-vous sûr de vouloir sulpprimer ce produit?")){
+      this._productService.delete(id).subscribe(data=>{
+        this.products = this.products.filter(p=>p.id != data.id);
+      });
+    }
   }
 
   borrow(productId : number ){
     this._borrowService.create(this.omnitheque.id,productId).subscribe(
       result => {
-        // Handle result
-        console.log(result)
       },
       error => {
         console.log(error.error.message)
       },
     );
+
+    this.refreshProducts()
+  }
+
+  checkBorrow(productId : number) : boolean {
+      return !this.user?.borrowList.find(b => b.productId === productId && !b.returned);
   }
 
 }

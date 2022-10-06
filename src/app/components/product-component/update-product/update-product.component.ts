@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../../services/product.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Categories} from "../../../models/Categories";
 
 @Component({
   selector: 'app-update-product',
@@ -22,6 +23,8 @@ export class UpdateProductComponent implements OnInit {
     private _productservice: ProductService,
     private _router : Router
   ) { }
+
+  categories : String[] = Categories;
 
   ngOnInit(): void {
     this._productservice.getOne(this._route.snapshot.params["id"]).subscribe(data => {
