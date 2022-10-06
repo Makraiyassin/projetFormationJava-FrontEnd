@@ -25,6 +25,17 @@ export class BorrowService {
         }
       )
     )
-
+  }
+  return(borrowId : number){
+    return(
+      this._http.post<any>(
+        `${environment.apiUrl}/borrow/return?borrowId=${borrowId}`,
+        {},
+        {
+          headers: new HttpHeaders()
+            .append("Authorization", this.token)
+        }
+      )
+    )
   }
 }

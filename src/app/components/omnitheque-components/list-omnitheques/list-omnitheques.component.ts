@@ -27,7 +27,7 @@ export class ListOmnithequesComponent implements OnInit {
   }
 
   page = 1;
-  pageSize = 8;
+  pageSize = 6;
   collectionSize !: number;
   omnitheques!: IOmnitheque[];
 

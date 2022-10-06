@@ -1,0 +1,35 @@
+<div class="container mt-2">
+
+  <div *ngIf="products" class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+    <div
+      *ngFor="let product of products"
+      class="col"
+    >
+      <div class="card">
+        <img  src="https://github.com/Makraiyassin/projetAngular/blob/main/src/assets/images/poduit.png?raw=true" class="card-img-top w-75" alt="image">
+        <div class="card-body">
+          <h5 class="card-title text-center text-secondary">{{product.name}}</h5>
+          <hr class="mx-auto w-25">
+          <p  class="card-text text-center text-secondary fw-bold">******</p>
+          <p  *ngIf="product.quantity>0" class="card-text text-center text-secondary fw-bold">disponible</p>
+          <p  *ngIf="product.quantity == 0" class="card-text text-center text-secondary fw-bold">indisponible</p>
+          <hr class="mx-auto w-25">
+          <a  routerLink="/omnitheque/{{product.omnithequeId}}" title="Visiter" class="btn page-link text-secondary font-weight-bold border-0">aller à la page de l'omnitèque</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="collectionSize" class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshProducts()">
+    </ngb-pagination>
+
+    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshProducts()">
+      <option [ngValue]="3">3 Produits par page</option>
+      <option [ngValue]="6">6 Produits par page</option>
+      <option [ngValue]="9">9 Produits par page</option>
+      <option [ngValue]="18">18 Produits par page</option>
+    </select>
+  </div>
+</div>

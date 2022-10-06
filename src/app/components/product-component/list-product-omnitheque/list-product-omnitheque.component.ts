@@ -11,10 +11,10 @@ import {BorrowService} from "../../../services/borrow.service";
 
 @Component({
   selector: 'app-list-product',
-  templateUrl: './list-product.component.html',
-  styleUrls: ['./list-product.component.css']
+  templateUrl: './list-product-omnitheque.component.html',
+  styleUrls: ['./list-product-omnitheque.component.css']
 })
-export class ListProductComponent implements OnInit {
+export class ListProductOmnithequeComponent implements OnInit {
 
   constructor(
     private _omnithequeService : OmnithequeService,
@@ -36,12 +36,13 @@ export class ListProductComponent implements OnInit {
     this._userService.getUser().subscribe(data => {
       this.user = data;
     })
-    if(this._route.snapshot.parent )
+    if(this._route.snapshot.parent ){
       this._omnithequeService.getOne(this._route.snapshot.parent.params["id"]).subscribe( data =>{
-      this.omnitheque = data;
-      this.collectionSize =  data.productList.filter(p=>p.quantity>0).length;
-      this.refreshProducts();
-    });
+        this.omnitheque = data;
+        this.collectionSize =  data.productList.filter(p=>p.quantity>0).length;
+        this.refreshProducts();
+      });
+    }
   }
 
   refreshProducts() {
