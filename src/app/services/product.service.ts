@@ -23,6 +23,10 @@ export class ProductService {
     return(this._http.get<any>(`${environment.apiUrl}/product`))
   }
 
+  search(name : string): Observable<IProduct[]>{
+    return(this._http.get<any>(`${environment.apiUrl}/product/search?name=${name}`))
+  }
+
   create(product: any): Observable<IProduct>{
     return(
       this._http.post<any>(

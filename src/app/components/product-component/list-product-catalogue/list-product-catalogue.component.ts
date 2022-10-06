@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IProduct} from "../../../models/IProduct";
 import {ProductService} from "../../../services/product.service";
 import {IOmnitheque} from "../../../models/IOmnitheque";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-list-product-catalogue',
@@ -11,16 +12,22 @@ import {IOmnitheque} from "../../../models/IOmnitheque";
 export class ListProductCatalogueComponent implements OnInit {
 
   private _productList!: IProduct[];
-  get productList(): IProduct[] {
-    return this._productList;
-  }
 
-
-  constructor(private _productService : ProductService,
+  constructor(
+    private _productService : ProductService,
+    private _route : ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this._productService.getAll().subscribe(
+    console.log(this._route.snapshot)
+    if(this._route.snapshot.url[0].path == "catalogue") this._productService.getAll().subscribe(
+      data => {
+        this._productList = data
+        this.collectionSize =  this._productList.length;
+        this.refreshProducts();
+      }
+    )
+    else if(this._route.snapshot.url[0].path == "search") this._productService.search(this._route.snapshot.params["name"]).subscribe(
       data => {
         this._productList = data
         this.collectionSize =  this._productList.length;

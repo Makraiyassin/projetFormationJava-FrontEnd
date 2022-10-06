@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:"",component:AccueilComponent},
   {path:"omnitheques",component:ListOmnithequesComponent},
   {path:"catalogue",component:ListProductCatalogueComponent},
+  {path:"search/:name",component:ListProductCatalogueComponent},
   { path: 'omnitheque', loadChildren: () => import("./pages/omnitheque/omnitheque.module").then(m => m.OmnithequeModule)},
   { path: 'profile', loadChildren: () => import("./pages/profile/profile.module").then(m => m.ProfileModule)},
   {path:"register", component: RegisterComponent},
