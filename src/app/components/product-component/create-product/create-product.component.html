@@ -1,5 +1,24 @@
 <h1 class="text-center">nouveau produit</h1>
 <form class="w-50 mx-auto" [formGroup]="productForm" >
+
+  <button id="upload_widget" class="cloudinary-button">choisir une image</button>
+
+  <script>
+    var myWidget = cloudinary.createUploadWidget({
+        cloudName: 'dsuyae7y8',
+        uploadPreset: 'omnitheque-preset'}, (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log('Done! Here is the image info: ', result.info);
+        }
+      }
+    )
+
+    document.getElementById("upload_widget").addEventListener("click", function(){
+      myWidget.open();
+    }, false);
+  </script>
+
+
   <div  class="mb-3">
     <label for="name" class="form-label">nom du produit</label>
     <input formControlName="name" type="text" class="form-control" id="name">
@@ -23,7 +42,5 @@
     </select>
   </div>
 
-
-  <button (click)="create()" class="btn btn-primary">créer</button>
+  <button (click)="create()" class="btn btn-primary mt-2">créer</button>
 </form>
-

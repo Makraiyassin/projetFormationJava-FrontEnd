@@ -7,7 +7,8 @@ export interface IOmnitheque {
   name: string;
   phone: string;
   email: string;
+  image: string
   address: IAddress;
   productList: IProduct[];
-  borrowList: any[]
+  borrowList: IBorrow[]
 }
