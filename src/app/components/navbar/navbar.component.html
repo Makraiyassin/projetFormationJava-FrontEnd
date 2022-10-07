@@ -21,9 +21,9 @@
       </ul>
     </div>
 
-    <div class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="recherche" aria-label="Search" [(ngModel)]="nameToSearch">
-      <button class="btn btn-outline-success" type="submit" [routerLink]="['/search',nameToSearch]" >chercher</button>
-    </div>
+    <form class="d-flex" role="search" [formGroup]="inputSearch">
+      <input class="form-control me-2" type="search" placeholder="recherche" aria-label="Search" formControlName="nameToSearch">
+      <button class="btn btn-outline-success" type="submit" (click)="search()" >chercher</button>
+    </form>
   </div>
 </nav>

@@ -22,6 +22,20 @@
 .margin-right-2{
   margin-right: 2px;
 }
+table th{
+  text-align: center;
+}
+table td div {
+  text-align: center;
+  max-width: 500px;
+  max-height: 100px;
+  overflow-y: auto ;
+}
+
+.description{
+  text-align: justify !important;
+  margin: auto;
+}
 
 @media screen and (max-width: 1150px) {
   .responsive-Display{

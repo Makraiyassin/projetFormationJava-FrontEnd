@@ -32,10 +32,10 @@
       <tbody>
       <tr *ngFor="let product of products ">
         <ng-container *ngIf="product.quantity">
-          <th scope="row"><img src="https://picsum.photos/75"></th>
-          <td>{{ product.name }}</td>
-          <td> {{product.category}} </td>
-          <td>{{ product.description}}</td>
+          <td><img src="https://picsum.photos/75"></td>
+          <td><div>{{ product.name }}</div></td>
+          <td> <div>{{product.category}}</div> </td>
+          <td><div class="description">{{ product.description}}</div></td>
           <td *ngIf=" omnitheque.id == user?.omnitheque?.id"  class="text-center">{{ product.quantity}}</td>
           <td>
             <ng-container *ngIf=" omnitheque.id != user?.omnitheque?.id">

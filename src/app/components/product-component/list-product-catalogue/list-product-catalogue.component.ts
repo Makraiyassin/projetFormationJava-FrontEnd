@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {IProduct} from "../../../models/IProduct";
 import {ProductService} from "../../../services/product.service";
 import {IOmnitheque} from "../../../models/IOmnitheque";
@@ -19,7 +19,6 @@ export class ListProductCatalogueComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this._route.snapshot)
     if(this._route.snapshot.url[0].path == "catalogue") this._productService.getAll().subscribe(
       data => {
         this._productList = data
@@ -27,13 +26,15 @@ export class ListProductCatalogueComponent implements OnInit {
         this.refreshProducts();
       }
     )
-    else if(this._route.snapshot.url[0].path == "search") this._productService.search(this._route.snapshot.params["name"]).subscribe(
-      data => {
-        this._productList = data
-        this.collectionSize =  this._productList.length;
-        this.refreshProducts();
-      }
-    )
+    else if(this._route.snapshot.url[0].path == "search") {
+      this._route.params.subscribe((params) => {
+        this._productService.search(params["name"]).subscribe(data => {
+          this._productList = data
+          this.collectionSize = this._productList.length;
+          this.refreshProducts();
+        })
+      })
+    }
   }
 
   page = 1;
