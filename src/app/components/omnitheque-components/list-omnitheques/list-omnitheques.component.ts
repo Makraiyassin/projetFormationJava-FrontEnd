@@ -10,9 +10,6 @@ import {OmnithequeService} from "../../../services/omnitheque.service";
 export class ListOmnithequesComponent implements OnInit {
 
   private _omnithequeList!: IOmnitheque[];
-  get omnithequeList(): IOmnitheque[] {
-    return this._omnithequeList;
-  }
 
   constructor(private _service : OmnithequeService) {}
 

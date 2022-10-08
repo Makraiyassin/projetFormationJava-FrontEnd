@@ -1,5 +1,11 @@
 <h1 class="text-center">modifier mon omnithèque</h1>
 <form class="w-50 mx-auto" [formGroup]="omnithequeForm" >
+
+  <div class="container">
+    <button class="p-2 m-2" id="upload_widget" class="cloudinary-button" (click)="cloudinaryGo()" >choisir une image</button>
+    <img height="100px" class="p-2 m-2" [src]="omnithequeForm.value.image" alt="image du produit">
+  </div>
+
   <div  class="mb-3">
     <label for="name" class="form-label">nom de l'omnithèque</label>
     <input formControlName="name" type="text" class="form-control" id="name">

@@ -5,6 +5,8 @@ import {ProductService} from "../../../services/product.service";
 import {Router} from "@angular/router";
 import {Categories} from "../../../models/Categories";
 
+declare let cloudinary: any ;
+
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
@@ -13,6 +15,7 @@ import {Categories} from "../../../models/Categories";
 export class CreateProductComponent implements OnInit {
 
   categories: String[] = Categories;
+  dynamicScript!: any;
 
   productForm = new FormGroup({
     name: new FormControl("", [Validators.required]),
@@ -27,12 +30,11 @@ export class CreateProductComponent implements OnInit {
     private _router : Router,
     @Inject(DOCUMENT) private document: Document,
     private _renderer: Renderer2,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.categories = Categories
-    const scriptElement = this.loadJsScript("https://upload-widget.cloudinary.com/global/all.js");
-    // const scriptElement2 = this.loadJsScript(""); // PATH FILE JS cloudinary.JS
+    this.productForm.patchValue({image:"/assets/produit.png"})
   }
   create() {
     this._productService.create(this.productForm.value).subscribe(data => {
@@ -40,11 +42,20 @@ export class CreateProductComponent implements OnInit {
     })
   }
 
-  loadJsScript( src: string): HTMLScriptElement {
-    let script = this._renderer.createElement("script");
-    script.type = 'text/javascript';
-    script.src = src;
-    this._renderer.appendChild(this.document.body, script);
-    return script;
+  cloudinaryGo(){
+    var myWidget = cloudinary.createUploadWidget(
+      {
+        cloudName: 'dsuyae7y8',
+        uploadPreset: 'omnitheque-preset'
+      },
+      (error:any,result:any)=> {
+        if (!error && result && result.event === "success") {
+          this.productForm.patchValue({image: result.info.url})
+        }
+      }
+    );
+
+    myWidget.open()
   }
 }
+

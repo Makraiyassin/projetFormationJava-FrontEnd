@@ -32,7 +32,7 @@
       <tbody>
       <tr *ngFor="let product of products ">
         <ng-container *ngIf="product.quantity">
-          <td><img src="https://picsum.photos/75"></td>
+          <td><img width="100px" height="100px" src="{{ product.image != 'string' ? product.image : '/assets/produit.png'}}"></td>
           <td><div>{{ product.name }}</div></td>
           <td> <div>{{product.category}}</div> </td>
           <td><div class="description">{{ product.description}}</div></td>

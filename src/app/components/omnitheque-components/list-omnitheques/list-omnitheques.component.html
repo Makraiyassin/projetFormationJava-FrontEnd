@@ -5,7 +5,7 @@
       class="col"
     >
       <div class="card">
-        <img  src="https://raw.githubusercontent.com/Makraiyassin/projetAngular/main/src/assets/images/omnitheque.png" class="card-img-top w-75" alt="image">
+        <img  height="250px"  src="{{ omnitheque.image && omnitheque.image != 'string' ? omnitheque.image : '/assets/omnitheque.png'}}" class="card-img-top mt-1 w-75 mx-auto" alt="image">
         <div class="card-body">
           <h5 class="card-title text-center text-secondary">{{omnitheque.name}}</h5>
           <hr class="mx-auto w-25">

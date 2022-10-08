@@ -4,6 +4,8 @@ import {UserService} from "../../../services/user.service";
 import {Router} from "@angular/router";
 import {OmnithequeService} from "../../../services/omnitheque.service";
 
+declare let cloudinary: any ;
+
 @Component({
   selector: 'app-create-omnitheque',
   templateUrl: './create-omnitheque.component.html',
@@ -24,6 +26,8 @@ export class CreateOmnithequeComponent implements OnInit {
     address: this.addressForm,
     phone: new FormControl("", [Validators.required]),
     email: new FormControl("", [Validators.required, Validators.email]),
+    image: new FormControl(),
+
   })
 
   constructor(
@@ -37,7 +41,8 @@ export class CreateOmnithequeComponent implements OnInit {
       data => {
         this.omnithequeForm.patchValue({
           phone: data.phone,
-          email: data.email
+          email: data.email,
+          image: "/assets/omnitheque.png"
         })
         this.addressForm.patchValue({
           street: data.address.street,
@@ -53,5 +58,23 @@ export class CreateOmnithequeComponent implements OnInit {
     this._omnithequeService.create(this.omnithequeForm.value).subscribe(data => {
       this._router.navigate([`/omnitheque/${data.id}`]);
     })
+  }
+
+  cloudinaryGo(){
+    var myWidget = cloudinary.createUploadWidget(
+      {
+        cloudName: 'dsuyae7y8',
+        uploadPreset: 'omnitheque-preset'
+      },
+      (error:any,result:any)=> {
+        if (!error && result && result.event === "success") {
+          console.log(result.info.url)
+          this.omnithequeForm.patchValue({image: result.info.url})
+        }
+      }
+    );
+
+    myWidget.open()
+    console.log(this.omnithequeForm.value)
   }
 }
