@@ -26,6 +26,7 @@ import { CreateOmnithequeComponent } from './components/omnitheque-components/cr
 import { ProfileListBorrowComponent } from './components/borrow-components/profile-list-borrow/profile-list-borrow.component';
 import { OmnithequeListBorrowComponent } from './components/borrow-components/omnitheque-list-borrow/omnitheque-list-borrow.component';
 import { ListProductCatalogueComponent } from './components/product-component/list-product-catalogue/list-product-catalogue.component';
+import { OneProductComponent } from './components/product-component/one-product/one-product.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ListProductCatalogueComponent } from './components/product-component/li
     ProfileListBorrowComponent,
     OmnithequeListBorrowComponent,
     ListProductCatalogueComponent,
+    OneProductComponent,
   ],
   imports: [
     BrowserModule,

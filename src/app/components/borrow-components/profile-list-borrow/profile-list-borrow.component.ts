@@ -3,6 +3,7 @@ import {IUser} from "../../../models/IUser";
 import {UserService} from "../../../services/user.service";
 import {IProduct} from "../../../models/IProduct";
 import {IBorrow} from "../../../models/IBorrow";
+import {ProductService} from "../../../services/product.service";
 
 @Component({
   selector: 'app-borrow-user',
@@ -11,7 +12,10 @@ import {IBorrow} from "../../../models/IBorrow";
 })
 export class ProfileListBorrowComponent implements OnInit {
 
-  constructor(private _userService : UserService) {
+  constructor(
+    private _userService : UserService,
+    private _productService : ProductService,
+  ) {
   }
 
   page = 1;
@@ -26,6 +30,7 @@ export class ProfileListBorrowComponent implements OnInit {
       data=> {
         this.user = data
         this.borrows = data.borrowList.filter(b => !b.returned )
+        this.borrows.map(b=>this._productService.getOne(b.productId).subscribe(data=> b.product=data))
         this.collectionSize =  this.borrows.length;
         this.refreshBorrows();
       }

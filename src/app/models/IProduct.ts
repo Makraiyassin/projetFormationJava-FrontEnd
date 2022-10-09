@@ -1,3 +1,5 @@
+import {IBorrow} from "./IBorrow";
+
 export interface IProduct {
   id: number;
   name: string;
@@ -6,5 +8,5 @@ export interface IProduct {
   description: string;
   image: string;
   omnithequeId: number;
-  borrowed: boolean;
+  borrowList: IBorrow[];
 }

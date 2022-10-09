@@ -10,9 +10,11 @@
         <div class="card-body">
           <h5 class="card-title text-center text-secondary">{{product.name}}</h5>
           <hr class="mx-auto w-25">
-          <p  class="card-text text-center text-secondary fw-bold">******</p>
-          <p  *ngIf="product.quantity>0" class="card-text text-center text-secondary fw-bold">disponible</p>
-          <p  *ngIf="product.quantity == 0" class="card-text text-center text-secondary fw-bold">indisponible</p>
+          <p class="text-center text-secondary " >Categorie : {{product.category.toLowerCase()}}</p>
+          <p class="text-center text-secondary fw-bold">description</p>
+          <p  class="card-text text-start text-secondary description-100">{{product.description}}</p>
+          <p  *ngIf="product.quantity>0 && borrowsProgress(product)<product.quantity; else unavailable" class="card-text text-center text-secondary fw-bold">disponible</p>
+          <ng-template #unavailable ><p class="card-text text-center text-secondary fw-bold" >indisponible</p></ng-template >
           <hr class="mx-auto w-25">
           <a  routerLink="/omnitheque/{{product.omnithequeId}}" title="Visiter" class="btn page-link text-secondary font-weight-bold border-0">aller à la page de l'omnitèque</a>
         </div>

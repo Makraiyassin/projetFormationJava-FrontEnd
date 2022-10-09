@@ -29,7 +29,7 @@
           <th scope="row">{{borrow.id}}</th>
           <td>{{borrow.startBorrow}}</td>
           <td>{{borrow.endBorrow}}</td>
-          <td>{{borrow.productId}}</td>
+          <td>{{borrow.product ? borrow.product.name : borrow.productId}} <a routerLink="product/{{borrow.productId}}">🔍</a></td>
           <td>
             <button class="btn btn-primary">demande de prolongation</button>
           </td>

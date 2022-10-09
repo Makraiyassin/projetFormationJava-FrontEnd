@@ -1,7 +1,6 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IProduct} from "../../../models/IProduct";
 import {ProductService} from "../../../services/product.service";
-import {IOmnitheque} from "../../../models/IOmnitheque";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -45,5 +44,9 @@ export class ListProductCatalogueComponent implements OnInit {
 
   refreshProducts() {
     this.products = this._productList.slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
+  }
+
+  borrowsProgress(product : IProduct): number {
+    return product.borrowList.filter(b=>!b.returned).length
   }
 }

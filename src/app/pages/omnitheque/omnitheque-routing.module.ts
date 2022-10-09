@@ -8,6 +8,7 @@ import {UpdateProductComponent} from "../../components/product-component/update-
 import {
   OmnithequeListBorrowComponent
 } from "../../components/borrow-components/omnitheque-list-borrow/omnitheque-list-borrow.component";
+import {OneProductComponent} from "../../components/product-component/one-product/one-product.component";
 
 const routes: Routes = [
   { path: ":id", component: OmnithequeComponent, children: [
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path:"products/update/:id", component: UpdateProductComponent},
     {path:"update/:id", component: UpdateProductComponent},
     {path:"borrows", component: OmnithequeListBorrowComponent},
+    { path: "borrows/product/:id", component: OneProductComponent },
   ]
 }];
 

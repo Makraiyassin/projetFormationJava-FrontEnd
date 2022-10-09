@@ -68,7 +68,6 @@ export class CreateOmnithequeComponent implements OnInit {
       },
       (error:any,result:any)=> {
         if (!error && result && result.event === "success") {
-          console.log(result.info.url)
           this.omnithequeForm.patchValue({image: result.info.url})
         }
       }

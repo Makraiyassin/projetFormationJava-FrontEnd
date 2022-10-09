@@ -6,6 +6,7 @@ import {OmnithequeService} from "../../../services/omnitheque.service";
 import {IOmnitheque} from "../../../models/IOmnitheque";
 import {ActivatedRoute} from "@angular/router";
 import {BorrowService} from "../../../services/borrow.service";
+import {ProductService} from "../../../services/product.service";
 
 @Component({
   selector: 'app-omnitheque-list-borrow',
@@ -18,6 +19,7 @@ export class OmnithequeListBorrowComponent implements OnInit {
     private _omnithequeService : OmnithequeService,
     private _borrowService : BorrowService,
     private _userService : UserService,
+    private _productService : ProductService,
     private _route : ActivatedRoute,
   ) {  }
 
@@ -39,6 +41,7 @@ export class OmnithequeListBorrowComponent implements OnInit {
         data=> {
           this.omnitheque = data
           this.borrows = data.borrowList
+          this.borrows.map(b=>this._productService.getOne(b.productId).subscribe(data=> b.product=data))
           this.collectionSize =  this.borrows.length;
           this.refreshBorrows();
         }

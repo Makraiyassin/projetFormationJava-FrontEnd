@@ -6,6 +6,7 @@ import {
   CreateOmnithequeComponent
 } from "../../components/omnitheque-components/create-omnitheque/create-omnitheque.component";
 import {ProfileListBorrowComponent} from "../../components/borrow-components/profile-list-borrow/profile-list-borrow.component";
+import {OneProductComponent} from "../../components/product-component/one-product/one-product.component";
 
 const routes: Routes = [
   { path: "", component: ProfileComponent, children: [
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: "compte", component: InfosProfileComponent },
     { path: "omnitheque/create", component: CreateOmnithequeComponent },
     { path: "borrows", component: ProfileListBorrowComponent },
+    { path: "borrows/product/:id", component: OneProductComponent },
   ]
 }];
 

@@ -43,9 +43,7 @@ export class UpdateProductComponent implements OnInit {
   }
 
   edit(){
-    console.log(this.productForm.value)
     this._productservice.update(this.productForm.value).subscribe(data => {
-      console.log(data)
       this._router.navigate([`/omnitheque/${data.omnithequeId}`]);
     })
   }
@@ -58,14 +56,12 @@ export class UpdateProductComponent implements OnInit {
       },
       (error:any,result:any)=> {
         if (!error && result && result.event === "success") {
-          console.log(result.info.url)
           this.productForm.patchValue({image: result.info.url})
         }
       }
     );
 
     myWidget.open()
-    console.log(this.productForm.value)
   }
 
 
