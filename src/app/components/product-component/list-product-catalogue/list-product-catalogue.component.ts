@@ -84,29 +84,30 @@ export class ListProductCatalogueComponent implements OnInit {
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }else{
         this.products = this.sortedProductList()
-          .filter(a=> a.quantity>0 && this.borrowsProgress(a)<a.quantity)
+          .filter(p=> p.quantity>0 && this.borrowsProgress(p)<p.quantity)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }
     }
     else if(!this.filters.value.available && this.filters.value.unavailable){
       if(this.filters.value.category != "all"){
         this.products = this.sortedProductList()
-          .filter(a=> a.quantity == 0 || this.borrowsProgress(a) >= a.quantity)
+          .filter(p=> p.quantity>0 &&  this.borrowsProgress(p) >= p.quantity)
           .filter(p=>p.category==this.filters.value.category)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }else{
         this.products = this.sortedProductList()
-          .filter(a=> a.quantity == 0 || this.borrowsProgress(a) >= a.quantity)
+          .filter(p=> p.quantity>0 && this.borrowsProgress(p) >= p.quantity)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }
     }
     else{
       if(this.filters.value.category != "all"){
         this.products = this.sortedProductList()
-          .filter(p=>p.category==this.filters.value.category)
+          .filter(p=> p.quantity>0 && p.category==this.filters.value.category)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }else{
         this.products = this.sortedProductList()
+          .filter(p=> p.quantity>0)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }
     }

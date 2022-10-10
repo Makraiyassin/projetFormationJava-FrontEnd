@@ -6,12 +6,6 @@
   </div>
 
   <div  class="mb-3">
-    <label for="image" class="form-label">image</label>
-    <input formControlName="image" type="text" class="form-control" id="image">
-    <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
-  </div>
-
-  <div  class="mb-3">
     <label for="name" class="form-label">nom du produit</label>
     <input formControlName="name" type="text" class="form-control" id="name">
     <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
@@ -29,7 +23,7 @@
   <div  class="mb-3">
     <label for="name" class="form-label">Categorie</label>
     <select formControlName="category" type="text" class="form-select" id="category">
-      <option *ngFor="let category of categories" value="{{category}}"> {{category.toLowerCase()}} </option>
+      <option *ngFor="let category of categories" value="{{category}}"> {{tradCategory(category)}} </option>
     </select>
   </div>
 

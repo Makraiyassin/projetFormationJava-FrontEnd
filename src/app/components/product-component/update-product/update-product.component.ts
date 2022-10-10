@@ -27,7 +27,7 @@ export class UpdateProductComponent implements OnInit {
     private _router : Router
   ) { }
 
-  categories : String[] = Categories;
+  categories : string[] = Categories;
 
   ngOnInit(): void {
     this._productservice.getOne(this._route.snapshot.params["id"]).subscribe(data => {
@@ -64,5 +64,21 @@ export class UpdateProductComponent implements OnInit {
     myWidget.open()
   }
 
+  tradCategory(category : string) {
+    switch (category){
+      case "BOOK":
+        return "Livre"
+      case "BOARDGAME":
+        return "Jeux de société"
+      case "VIDEOGAME":
+        return "Jeux vidéo"
+      case "MOVIE":
+        return "Film"
+      case "MUSIC":
+        return "Musique"
+      default:
+        return "Livre"
+    }
+  }
 
 }

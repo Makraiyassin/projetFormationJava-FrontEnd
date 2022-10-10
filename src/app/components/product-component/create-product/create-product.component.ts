@@ -14,7 +14,7 @@ declare let cloudinary: any ;
 })
 export class CreateProductComponent implements OnInit {
 
-  categories: String[] = Categories;
+  categories: string[] = Categories;
   dynamicScript!: any;
 
   productForm = new FormGroup({
@@ -57,5 +57,24 @@ export class CreateProductComponent implements OnInit {
 
     myWidget.open()
   }
+
+  tradCategory(category : string) {
+    switch (category){
+      case "BOOK":
+        return "Livre"
+      case "BOARDGAME":
+        return "Jeux de société"
+      case "VIDEOGAME":
+        return "Jeux vidéo"
+      case "MOVIE":
+        return "Film"
+      case "MUSIC":
+        return "Musique"
+      default:
+        return "Livre"
+    }
+  }
+
+
 }
 
