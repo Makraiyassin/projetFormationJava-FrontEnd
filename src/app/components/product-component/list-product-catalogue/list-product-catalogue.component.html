@@ -61,10 +61,10 @@
 
 
   <div *ngIf="collectionSize" class="d-flex justify-content-between p-2 mt-3">
-    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshProducts()">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="filter()">
     </ngb-pagination>
 
-    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshProducts()">
+    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="filter()">
       <option [ngValue]="3">3 Produits par page</option>
       <option [ngValue]="6">6 Produits par page</option>
       <option [ngValue]="9">9 Produits par page</option>

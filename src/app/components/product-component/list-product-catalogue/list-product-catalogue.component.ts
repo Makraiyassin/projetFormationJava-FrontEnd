@@ -28,19 +28,18 @@ export class ListProductCatalogueComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this._route.snapshot.url[0].path == "catalogue") this._productService.getAll().subscribe(
-      data => {
+    if(this._route.snapshot.url[0].path == "catalogue") this._productService.getAll()
+      .subscribe(data => {
         this._productList = data
         this.collectionSize =  this._productList.length;
-        this.refreshProducts();
-      }
-    )
+        this.filter();
+    })
     else if(this._route.snapshot.url[0].path == "search") {
       this._route.params.subscribe((params) => {
         this._productService.search(params["name"]).subscribe(data => {
           this._productList = data
           this.collectionSize = this._productList.length;
-          this.refreshProducts();
+          this.filter();
         })
       })
     }
@@ -50,11 +49,6 @@ export class ListProductCatalogueComponent implements OnInit {
   pageSize = 6;
   collectionSize !: number;
   products !: IProduct[];
-
-
-  refreshProducts() {
-    this.products = this._productList.slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
-  }
 
   borrowsProgress(product : IProduct): number {
     return product.borrowList.filter(b=>!b.returned).length
@@ -77,35 +71,63 @@ export class ListProductCatalogueComponent implements OnInit {
     }
   }
 
-
   filter(){
-    if(!!this.filters.value.available && !!this.filters.value.unavailable){
+    if(!this.filters.value.available && !this.filters.value.unavailable){
       this.products = []
       return
-    }else{
-      if(this.filters.value.sortBy == "nameAsc") {
-        this._productList.sort((a, b) => (a.name > b.name) ? 1 : (a.name == b.name) ? 0 :-1).slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-      }else if(this.filters.value.sortBy == "nameDesc") {
-        this._productList.sort((a, b) => (a.name < b.name) ? 1 :  (a.name == b.name) ? 0 : -1).slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-      }else if(this.filters.value.sortBy == "category") {
-        this._productList.sort((a, b) => (a.category > b.category) ? 1 : (a.category == b.category) ? 0 : -1 ).slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-      }
-
-      if(this.filters.value.category != "all"){
-        this.products = this._productList.filter(p=>p.category==this.filters.value.category).slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
-      }else{
-        this.products = this._productList.slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
-      }
-
-      // if(this.filters.value.available == true){
-      //   this.products =  this.products.filter(a=> {a.quantity>0 && this.borrowsProgress(a)<a.quantity}).slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
-      // }
-      // else if(!!this.filters.value.unavailable){
-      //   this.products =  this.products.filter(a=> {a.quantity == 0 || this.borrowsProgress(a) >= a.quantity}).slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
-      // }
-
     }
+    else if(this.filters.value.available && !this.filters.value.unavailable){
+      if(this.filters.value.category != "all"){
+        this.products = this.sortedProductList()
+          .filter(a=> a.quantity>0 && this.borrowsProgress(a) < a.quantity)
+          .filter(p=>p.category==this.filters.value.category)
+          .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
+      }else{
+        this.products = this.sortedProductList()
+          .filter(a=> a.quantity>0 && this.borrowsProgress(a)<a.quantity)
+          .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
+      }
+    }
+    else if(!this.filters.value.available && this.filters.value.unavailable){
+      if(this.filters.value.category != "all"){
+        this.products = this.sortedProductList()
+          .filter(a=> a.quantity == 0 || this.borrowsProgress(a) >= a.quantity)
+          .filter(p=>p.category==this.filters.value.category)
+          .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
+      }else{
+        this.products = this.sortedProductList()
+          .filter(a=> a.quantity == 0 || this.borrowsProgress(a) >= a.quantity)
+          .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
+      }
+    }
+    else{
+      if(this.filters.value.category != "all"){
+        this.products = this.sortedProductList()
+          .filter(p=>p.category==this.filters.value.category)
+          .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
+      }else{
+        this.products = this.sortedProductList()
+          .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
+      }
+    }
+  }
 
+  sortedProductList(){
+    if(this.filters.value.sortBy == "nameAsc") {
+      return this._productList
+        .sort((a, b) => (a.name > b.name) ? 1 : (a.name == b.name) ? 0 :-1)
+    }
+    else if(this.filters.value.sortBy == "nameDesc") {
+      return this._productList
+        .sort((a, b) => (a.name < b.name) ? 1 :  (a.name == b.name) ? 0 : -1)
+    }
+    else if(this.filters.value.sortBy == "category") {
+      return this._productList
+        .sort((a, b) => (a.category > b.category) ? 1 : (a.category == b.category) ? 0 : -1 )
+    }
+    else{
+      return this._productList
+    }
   }
 
 }
