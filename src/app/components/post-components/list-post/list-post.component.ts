@@ -18,8 +18,8 @@ export class ListPostComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this._route.snapshot.url)
-    if(this._route.snapshot.url[0].path == "omnitheque"){
-      console.log("omnitheque")
+    if(this._route.snapshot.url[0].path == "publications"){
+      console.log("publications")
     }
 
   }
