@@ -14,10 +14,10 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
 import { OmnithequeComponent } from './pages/omnitheque/omnitheque.component';
 import {ListOmnithequesComponent} from "./components/omnitheque-components/list-omnitheques/list-omnitheques.component";
 import { SideBareOmnithequeComponent } from './components/omnitheque-components/side-bare-omnitheque/side-bare-omnitheque.component';
-import { ListProductOmnithequeComponent } from './components/product-component/list-product-omnitheque/list-product-omnitheque.component';
+import { ListProductOmnithequeComponent } from './components/product-components/list-product-omnitheque/list-product-omnitheque.component';
 import { UpdateOmnithequeComponent } from './components/omnitheque-components/update-omnitheque/update-omnitheque.component';
-import { CreateProductComponent } from './components/product-component/create-product/create-product.component';
-import { UpdateProductComponent } from './components/product-component/update-product/update-product.component';
+import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
+import { UpdateProductComponent } from './components/product-components/update-product/update-product.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SideBareProfileComponent } from './components/profile-components/side-bare-profile/side-bare-profile.component';
@@ -25,8 +25,9 @@ import { InfosProfileComponent } from './components/profile-components/infos-pro
 import { CreateOmnithequeComponent } from './components/omnitheque-components/create-omnitheque/create-omnitheque.component';
 import { ProfileListBorrowComponent } from './components/borrow-components/profile-list-borrow/profile-list-borrow.component';
 import { OmnithequeListBorrowComponent } from './components/borrow-components/omnitheque-list-borrow/omnitheque-list-borrow.component';
-import { ListProductCatalogueComponent } from './components/product-component/list-product-catalogue/list-product-catalogue.component';
-import { OneProductComponent } from './components/product-component/one-product/one-product.component';
+import { ListProductCatalogueComponent } from './components/product-components/list-product-catalogue/list-product-catalogue.component';
+import { OneProductComponent } from './components/product-components/one-product/one-product.component';
+import { ListPostComponent } from './components/post-components/list-post/list-post.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { OneProductComponent } from './components/product-component/one-product/
     OmnithequeListBorrowComponent,
     ListProductCatalogueComponent,
     OneProductComponent,
+    ListPostComponent,
   ],
   imports: [
     BrowserModule,

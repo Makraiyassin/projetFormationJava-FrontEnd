@@ -36,7 +36,7 @@ export class ListProductCatalogueComponent implements OnInit {
     })
     else if(this._route.snapshot.url[0].path == "search") {
       this._route.params.subscribe((params) => {
-        this._productService.search(params["name"]).subscribe(data => {
+        this._productService.search(params["word"]).subscribe(data => {
           this._productList = data
           this.collectionSize = this._productList.length;
           this.filter();

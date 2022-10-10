@@ -5,13 +5,13 @@ import {ListOmnithequesComponent} from "./components/omnitheque-components/list-
 import {RegisterComponent} from "./components/register/register.component";
 import {
   ListProductCatalogueComponent
-} from "./components/product-component/list-product-catalogue/list-product-catalogue.component";
+} from "./components/product-components/list-product-catalogue/list-product-catalogue.component";
 
 const routes: Routes = [
   {path:"",component:AccueilComponent},
   {path:"omnitheques",component:ListOmnithequesComponent},
   {path:"catalogue",component:ListProductCatalogueComponent},
-  {path:"search/:name",component:ListProductCatalogueComponent},
+  {path:"search/:word",component:ListProductCatalogueComponent},
   { path: 'omnitheque', loadChildren: () => import("./pages/omnitheque/omnitheque.module").then(m => m.OmnithequeModule)},
   { path: 'profile', loadChildren: () => import("./pages/profile/profile.module").then(m => m.ProfileModule)},
   {path:"register", component: RegisterComponent},
