@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../../services/product.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Categories} from "../../../models/Categories";
+import {tradCategory} from "../../../tools/tradCategory";
 
 declare let cloudinary: any ;
 
@@ -64,21 +65,5 @@ export class UpdateProductComponent implements OnInit {
     myWidget.open()
   }
 
-  tradCategory(category : string) {
-    switch (category){
-      case "BOOK":
-        return "Livre"
-      case "BOARDGAME":
-        return "Jeux de société"
-      case "VIDEOGAME":
-        return "Jeux vidéo"
-      case "MOVIE":
-        return "Film"
-      case "MUSIC":
-        return "Musique"
-      default:
-        return "Livre"
-    }
-  }
-
+  tradCategory(category : string) {return tradCategory(category)}
 }

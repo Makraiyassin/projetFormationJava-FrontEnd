@@ -28,6 +28,9 @@ import { OmnithequeListBorrowComponent } from './components/borrow-components/om
 import { ListProductCatalogueComponent } from './components/product-components/list-product-catalogue/list-product-catalogue.component';
 import { OneProductComponent } from './components/product-components/one-product/one-product.component';
 import { ListPostComponent } from './components/post-components/list-post/list-post.component';
+import { CreatePostComponent } from './components/post-components/create-post/create-post.component';
+import { UpdatePostComponent } from './components/post-components/update-post/update-post.component';
+import { OnePostComponent } from './components/post-components/one-post/one-post.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { ListPostComponent } from './components/post-components/list-post/list-p
     ListProductCatalogueComponent,
     OneProductComponent,
     ListPostComponent,
+    CreatePostComponent,
+    UpdatePostComponent,
+    OnePostComponent,
   ],
   imports: [
     BrowserModule,

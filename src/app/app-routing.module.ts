@@ -6,9 +6,11 @@ import {RegisterComponent} from "./components/register/register.component";
 import {
   ListProductCatalogueComponent
 } from "./components/product-components/list-product-catalogue/list-product-catalogue.component";
+import {OnePostComponent} from "./components/post-components/one-post/one-post.component";
 
 const routes: Routes = [
   {path:"",component:AccueilComponent},
+  {path:"publication/:id",component:OnePostComponent},
   {path:"omnitheques",component:ListOmnithequesComponent},
   {path:"catalogue",component:ListProductCatalogueComponent},
   {path:"search/:word",component:ListProductCatalogueComponent},

@@ -1,0 +1,21 @@
+<h1 class="text-center">modifier publication</h1>
+<form class="w-50 mx-auto" [formGroup]="postForm" >
+  <div class="container">
+    <button class="p-2 m-2" id="upload_widget" class="cloudinary-button" (click)="cloudinaryGo()" >choisir une image</button>
+    <img height="100px" class="p-2 m-2" [src]="postForm.value.image" alt="image du produit">
+  </div>
+
+  <div  class="mb-3">
+    <label for="title" class="form-label">titre</label>
+    <input formControlName="title" type="text" class="form-control" id="title">
+    <!--    <div id="erreur_firstName" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+
+  <div  class="mb-3">
+    <label for="content" class="form-label">publication</label>
+    <textarea maxlength="200000" formControlName="content" type="text" class="form-control" id="content"></textarea>
+    <!--    <div id="erreur_phone" class="form-text text-danger">test d'erreur</div>-->
+  </div>
+
+  <button (click)="edit()" class="btn btn-primary mt-2">modifier</button>
+</form>

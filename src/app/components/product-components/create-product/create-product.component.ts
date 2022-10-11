@@ -1,5 +1,4 @@
-import {Component, Inject, OnInit, Renderer2} from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import {Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductService} from "../../../services/product.service";
 import {Router} from "@angular/router";
@@ -14,6 +13,11 @@ declare let cloudinary: any ;
 })
 export class CreateProductComponent implements OnInit {
 
+  constructor(
+    private _productService : ProductService,
+    private _router : Router,
+  ) {}
+
   categories: string[] = Categories;
   dynamicScript!: any;
 
@@ -25,21 +29,10 @@ export class CreateProductComponent implements OnInit {
     image: new FormControl("", [Validators.required]),
   })
 
-  constructor(
-    private _productService : ProductService,
-    private _router : Router,
-    @Inject(DOCUMENT) private document: Document,
-    private _renderer: Renderer2,
-  ) {}
 
   ngOnInit(): void {
     this.categories = Categories
     this.productForm.patchValue({image:"/assets/produit.png"})
-  }
-  create() {
-    this._productService.create(this.productForm.value).subscribe(data => {
-      this._router.navigate([`/omnitheque/${data.omnithequeId}`]);
-    })
   }
 
   cloudinaryGo(){
@@ -75,6 +68,11 @@ export class CreateProductComponent implements OnInit {
     }
   }
 
+  create() {
+    this._productService.create(this.productForm.value).subscribe(data => {
+      this._router.navigate([`/omnitheque/${data.omnithequeId}`]);
+    })
+  }
 
 }
 

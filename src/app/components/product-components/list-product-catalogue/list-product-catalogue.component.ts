@@ -4,6 +4,7 @@ import {ProductService} from "../../../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {Categories} from "../../../models/Categories";
 import {FormControl, FormGroup} from "@angular/forms";
+import {tradCategory} from "../../../tools/tradCategory";
 
 @Component({
   selector: 'app-list-product-catalogue',
@@ -52,23 +53,6 @@ export class ListProductCatalogueComponent implements OnInit {
 
   borrowsProgress(product : IProduct): number {
     return product.borrowList.filter(b=>!b.returned).length
-  }
-
-  tradCategory(category : string) {
-    switch (category){
-      case "BOOK":
-        return "Livre"
-      case "BOARDGAME":
-        return "Jeux de société"
-      case "VIDEOGAME":
-        return "Jeux vidéo"
-      case "MOVIE":
-        return "Film"
-      case "MUSIC":
-        return "Musique"
-      default:
-        return "Livre"
-    }
   }
 
   filter(){
@@ -131,4 +115,5 @@ export class ListProductCatalogueComponent implements OnInit {
     }
   }
 
+  tradCategory(category : string) {return tradCategory(category)}
 }
