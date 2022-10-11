@@ -9,11 +9,11 @@ import {IProduct} from "../models/IProduct";
   providedIn: 'root'
 })
 export class ProductService {
-  token = "";
-
   constructor(private _http : HttpClient, private _session: SessionService) {
     this._session.token.subscribe(token => this.token = `Bearer ${token}`)
   }
+
+  token = "";
 
   getOne(id : number): Observable<IProduct>{
     return(this._http.get<any>(`${environment.apiUrl}/product/${id}`))

@@ -1,6 +1,7 @@
 import {IAddress} from "./IAddress";
 import {IProduct} from "./IProduct";
 import {IBorrow} from "./IBorrow";
+import {IPost} from "./IPost";
 
 export interface IOmnitheque {
   id: number;
@@ -10,5 +11,6 @@ export interface IOmnitheque {
   image: string
   address: IAddress;
   productList: IProduct[];
+  postList: IPost[];
   borrowList: IBorrow[]
 }

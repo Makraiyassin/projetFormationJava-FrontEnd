@@ -90,6 +90,7 @@ a:hover {
 }
 .postcard .postcard__preview-txt {
   overflow: hidden;
+  max-height: 45px;
   text-overflow: ellipsis;
   text-align: justify;
   height: 100%;

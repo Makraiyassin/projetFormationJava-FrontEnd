@@ -13,9 +13,9 @@ import {ListPostComponent} from "../../components/post-components/list-post/list
 
 const routes: Routes = [
   { path: ":id", component: OmnithequeComponent, children: [
-    { path: "products", component: ListProductOmnithequeComponent },
-    { path: "", component: ListProductOmnithequeComponent },
+    { path: "", component: ListPostComponent },
     { path: "publications", component: ListPostComponent },
+    { path: "products", component: ListProductOmnithequeComponent },
     { path: "update", component: UpdateOmnithequeComponent },
     { path: "products/create", component: CreateProductComponent },
     { path: "create", component: CreateProductComponent },
