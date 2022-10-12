@@ -7,6 +7,7 @@ import {
   ListProductCatalogueComponent
 } from "./components/product-components/list-product-catalogue/list-product-catalogue.component";
 import {OnePostComponent} from "./components/post-components/one-post/one-post.component";
+import {VerifyEmailComponent} from "./components/verify-email/verify-email.component";
 
 const routes: Routes = [
   {path:"",component:AccueilComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'omnitheque', loadChildren: () => import("./pages/omnitheque/omnitheque.module").then(m => m.OmnithequeModule)},
   { path: 'profile', loadChildren: () => import("./pages/profile/profile.module").then(m => m.ProfileModule)},
   {path:"register", component: RegisterComponent},
+  {path:"verify/:code", component: VerifyEmailComponent},
 
 ];
 

@@ -31,6 +31,7 @@ import { ListPostComponent } from './components/post-components/list-post/list-p
 import { CreatePostComponent } from './components/post-components/create-post/create-post.component';
 import { UpdatePostComponent } from './components/post-components/update-post/update-post.component';
 import { OnePostComponent } from './components/post-components/one-post/one-post.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { OnePostComponent } from './components/post-components/one-post/one-post
     CreatePostComponent,
     UpdatePostComponent,
     OnePostComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     BrowserModule,
