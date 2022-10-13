@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
 import {IUser} from "../../../models/IUser";
 import {IOmnitheque} from "../../../models/IOmnitheque";
 import {OmnithequeService} from "../../../services/omnitheque.service";
@@ -8,6 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import {IProduct} from "../../../models/IProduct";
 import {ProductService} from "../../../services/product.service";
 import {BorrowService} from "../../../services/borrow.service";
+import {tradCategory} from "../../../tools/tradCategory";
 
 @Component({
   selector: 'app-list-product',
@@ -72,5 +72,7 @@ export class ListProductOmnithequeComponent implements OnInit {
   checkBorrow(productId : number) : boolean {
       return !this.user?.borrowList.find(b => b.productId === productId && !b.returned);
   }
+
+  tradCategory(category : string) {return tradCategory(category)}
 
 }

@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../../services/product.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Categories} from "../../../models/Categories";
+import {tradCategory} from "../../../tools/tradCategory";
 
 declare let cloudinary: any ;
 
@@ -27,7 +28,7 @@ export class UpdateProductComponent implements OnInit {
     private _router : Router
   ) { }
 
-  categories : String[] = Categories;
+  categories : string[] = Categories;
 
   ngOnInit(): void {
     this._productservice.getOne(this._route.snapshot.params["id"]).subscribe(data => {
@@ -64,5 +65,5 @@ export class UpdateProductComponent implements OnInit {
     myWidget.open()
   }
 
-
+  tradCategory(category : string) {return tradCategory(category)}
 }

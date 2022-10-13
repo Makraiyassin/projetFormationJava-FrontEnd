@@ -13,7 +13,7 @@
 
   <div  class="mb-3">
     <label for="description" class="form-label">description</label>
-    <textarea maxlength="2000" formControlName="description" type="text" class="form-control" id="description"></textarea>
+    <textarea maxlength="20000" formControlName="description" type="text" class="form-control" id="description"></textarea>
     <!--    <div id="erreur_phone" class="form-text text-danger">test d'erreur</div>-->
   </div>
   <div  class="mb-3">
@@ -24,7 +24,7 @@
   <div class="col-md-4">
     <label for="category" class="form-label">categorie</label>
     <select  formControlName="category" id="category" class="form-select">
-      <option *ngFor="let category of categories" value="{{category}}"> {{category.toLowerCase()}} </option>
+      <option *ngFor="let category of categories" value="{{category}}"> {{tradCategory(category)}} </option>
     </select>
   </div>
 

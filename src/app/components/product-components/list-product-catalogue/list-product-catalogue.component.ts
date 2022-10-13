@@ -4,6 +4,7 @@ import {ProductService} from "../../../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {Categories} from "../../../models/Categories";
 import {FormControl, FormGroup} from "@angular/forms";
+import {tradCategory} from "../../../tools/tradCategory";
 
 @Component({
   selector: 'app-list-product-catalogue',
@@ -36,7 +37,7 @@ export class ListProductCatalogueComponent implements OnInit {
     })
     else if(this._route.snapshot.url[0].path == "search") {
       this._route.params.subscribe((params) => {
-        this._productService.search(params["name"]).subscribe(data => {
+        this._productService.search(params["word"]).subscribe(data => {
           this._productList = data
           this.collectionSize = this._productList.length;
           this.filter();
@@ -54,23 +55,6 @@ export class ListProductCatalogueComponent implements OnInit {
     return product.borrowList.filter(b=>!b.returned).length
   }
 
-  tradCategory(category : string) {
-    switch (category){
-      case "BOOK":
-        return "Livre"
-      case "BOARDGAME":
-        return "Jeux de société"
-      case "VIDEOGAME":
-        return "Jeux vidéo"
-      case "MOVIE":
-        return "Film"
-      case "MUSIC":
-        return "Musique"
-      default:
-        return "Livre"
-    }
-  }
-
   filter(){
     if(!this.filters.value.available && !this.filters.value.unavailable){
       this.products = []
@@ -84,29 +68,30 @@ export class ListProductCatalogueComponent implements OnInit {
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }else{
         this.products = this.sortedProductList()
-          .filter(a=> a.quantity>0 && this.borrowsProgress(a)<a.quantity)
+          .filter(p=> p.quantity>0 && this.borrowsProgress(p)<p.quantity)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }
     }
     else if(!this.filters.value.available && this.filters.value.unavailable){
       if(this.filters.value.category != "all"){
         this.products = this.sortedProductList()
-          .filter(a=> a.quantity == 0 || this.borrowsProgress(a) >= a.quantity)
+          .filter(p=> p.quantity>0 &&  this.borrowsProgress(p) >= p.quantity)
           .filter(p=>p.category==this.filters.value.category)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }else{
         this.products = this.sortedProductList()
-          .filter(a=> a.quantity == 0 || this.borrowsProgress(a) >= a.quantity)
+          .filter(p=> p.quantity>0 && this.borrowsProgress(p) >= p.quantity)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }
     }
     else{
       if(this.filters.value.category != "all"){
         this.products = this.sortedProductList()
-          .filter(p=>p.category==this.filters.value.category)
+          .filter(p=> p.quantity>0 && p.category==this.filters.value.category)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }else{
         this.products = this.sortedProductList()
+          .filter(p=> p.quantity>0)
           .slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
       }
     }
@@ -130,4 +115,5 @@ export class ListProductCatalogueComponent implements OnInit {
     }
   }
 
+  tradCategory(category : string) {return tradCategory(category)}
 }

@@ -1,37 +1,36 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {SessionService} from "./session.service";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {SessionService} from "./session.service";
+import {IPost} from "../models/IPost";
 import {IProduct} from "../models/IProduct";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class PostService {
+
   constructor(private _http : HttpClient, private _session: SessionService) {
     this._session.token.subscribe(token => this.token = `Bearer ${token}`)
   }
 
   token = "";
 
-  getOne(id : number): Observable<IProduct>{
-    return(this._http.get<any>(`${environment.apiUrl}/product/${id}`))
+  getOne(id : number): Observable<IPost>{
+    return(this._http.get<any>(`${environment.apiUrl}/post/${id}`))
   }
 
-  getAll(): Observable<IProduct[]>{
-    return(this._http.get<any>(`${environment.apiUrl}/product`))
+  getAll(): Observable<IPost[]>{
+    return(this._http.get<any>(`${environment.apiUrl}/post`))
   }
 
-  search(name : string): Observable<IProduct[]>{
-    return(this._http.get<any>(`${environment.apiUrl}/product/search?name=${name}`))
-  }
 
-  create(product: any): Observable<IProduct>{
+  create(post : any): Observable<IPost>{
     return(
       this._http.post<any>(
-        `${environment.apiUrl}/product/create`,
-        product,
+        `${environment.apiUrl}/post/create`,
+        post,
         {
           headers: new HttpHeaders()
             .append("Authorization", this.token)
@@ -40,10 +39,10 @@ export class ProductService {
     )
   }
 
-  delete(id : number): Observable<IProduct>{
+  delete(id : number): Observable<IPost>{
     return(
       this._http.delete<any>(
-        `${environment.apiUrl}/product/delete?id=${id}`,
+        `${environment.apiUrl}/post/delete?id=${id}`,
         {
           headers: new HttpHeaders()
             .append("Authorization", this.token)
@@ -55,7 +54,7 @@ export class ProductService {
   update(form: any): Observable<IProduct>{
     return(
       this._http.patch<any>(
-        `${environment.apiUrl}/product/update`,
+        `${environment.apiUrl}/post/update`,
         form,
         {
           headers: new HttpHeaders()
@@ -64,4 +63,5 @@ export class ProductService {
       )
     )
   }
+
 }

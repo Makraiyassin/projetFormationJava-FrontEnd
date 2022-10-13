@@ -12,7 +12,7 @@
 
 
 <div *ngIf="omnitheque?.id == user?.omnitheque?.id" class="container justify-content-center">
-  <a  routerLink="create" class="btn btn-outline-primary">ajouter un produit</a>
+  <a  routerLink="createProduct" class="btn btn-outline-primary">ajouter un produit</a>
 </div>
 
 <div *ngIf="products">
@@ -34,7 +34,7 @@
         <ng-container *ngIf="product.quantity">
           <td><img width="100px" height="100px" src="{{ product.image != 'string' ? product.image : '/assets/produit.png'}}"></td>
           <td><div>{{ product.name }}</div></td>
-          <td> <div>{{product.category}}</div> </td>
+          <td> <div>{{tradCategory(product.category)}}</div> </td>
           <td><div class="description">{{ product.description}}</div></td>
           <td *ngIf=" omnitheque.id == user?.omnitheque?.id"  class="text-center">{{ product.quantity}}</td>
           <td>
@@ -43,7 +43,7 @@
               <a *ngIf="!checkBorrow(product.id)" routerLink="/profile/borrows" class="text-success">emprunt en cours</a>
             </ng-container>
             <ng-container *ngIf="omnitheque.id == user?.omnitheque?.id" >
-              <a  routerLink="update/{{product.id}}" class="btn btn-primary margin-right-2">éditer</a>
+              <a  routerLink="update/{{product.id}}" class="btn btn-primary m-2">éditer</a>
               <button (click)="delete(product.id)" class="btn btn-primary">supprimer</button>
             </ng-container>
 

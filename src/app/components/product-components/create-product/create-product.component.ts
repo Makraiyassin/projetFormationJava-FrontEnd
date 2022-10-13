@@ -1,5 +1,4 @@
-import {Component, Inject, OnInit, Renderer2} from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import {Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductService} from "../../../services/product.service";
 import {Router} from "@angular/router";
@@ -14,7 +13,12 @@ declare let cloudinary: any ;
 })
 export class CreateProductComponent implements OnInit {
 
-  categories: String[] = Categories;
+  constructor(
+    private _productService : ProductService,
+    private _router : Router,
+  ) {}
+
+  categories: string[] = Categories;
   dynamicScript!: any;
 
   productForm = new FormGroup({
@@ -25,21 +29,10 @@ export class CreateProductComponent implements OnInit {
     image: new FormControl("", [Validators.required]),
   })
 
-  constructor(
-    private _productService : ProductService,
-    private _router : Router,
-    @Inject(DOCUMENT) private document: Document,
-    private _renderer: Renderer2,
-  ) {}
 
   ngOnInit(): void {
     this.categories = Categories
     this.productForm.patchValue({image:"/assets/produit.png"})
-  }
-  create() {
-    this._productService.create(this.productForm.value).subscribe(data => {
-      this._router.navigate([`/omnitheque/${data.omnithequeId}`]);
-    })
   }
 
   cloudinaryGo(){
@@ -57,5 +50,29 @@ export class CreateProductComponent implements OnInit {
 
     myWidget.open()
   }
+
+  tradCategory(category : string) {
+    switch (category){
+      case "BOOK":
+        return "Livre"
+      case "BOARDGAME":
+        return "Jeux de société"
+      case "VIDEOGAME":
+        return "Jeux vidéo"
+      case "MOVIE":
+        return "Film"
+      case "MUSIC":
+        return "Musique"
+      default:
+        return "Livre"
+    }
+  }
+
+  create() {
+    this._productService.create(this.productForm.value).subscribe(data => {
+      this._router.navigate([`/omnitheque/${data.omnithequeId}`]);
+    })
+  }
+
 }
 

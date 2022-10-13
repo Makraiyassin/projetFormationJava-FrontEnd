@@ -1,0 +1,46 @@
+<ng-container *ngIf="posts || omnitheque">
+  <div *ngIf="omnitheque?.id == user?.omnitheque?.id" class="container justify-content-center">
+    <a  routerLink="createPost" class="btn btn-outline-primary">publier une anonce</a>
+  </div>
+
+  <div  *ngIf="posts" class="container py-2">
+    <article  *ngFor="let post of posts" class="postcard light blue">
+        <a class="postcard__img_link">
+          <img class="postcard__img" src="{{post.image}}" alt="Image Title" />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title blue"><a>{{post.title}}</a></h1>
+          <div class="postcard__subtitle small">
+            <time>
+              <i class="fas fa-calendar-alt mr-2"></i>{{post.date}}
+            </time>
+          </div>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">{{post.content}}</div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item play blue">
+              <a *ngIf="omnitheque?.id != user?.omnitheque?.id" routerLink="/omnitheque/{{post.omnithequeId}}/publications"><i class="fas fa-play mr-2"></i>voir l'omnitheque</a>
+              <a  *ngIf="omnitheque?.id == user?.omnitheque?.id" routerLink="/omnitheque/{{post.omnithequeId}}/publications/update/{{post.id}}"><i class="fas fa-play mr-2"></i>modifier</a>
+            </li>
+            <li *ngIf="omnitheque?.id == user?.omnitheque?.id"class="tag__item play blue">
+              <a (click)="delete(post.id)"><i class="fas fa-play mr-2" ></i>supprimer</a>
+            </li>
+            <li class="tag__item play blue">
+              <a routerLink="publication/{{post.id}}" ><i class="fas fa-play mr-2"></i>voir le post</a>
+            </li>
+          </ul>
+        </div>
+    </article>
+    <div *ngIf="collectionSize" class="d-flex justify-content-between p-2 mt-3">
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshPosts()">
+      </ngb-pagination>
+
+      <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPosts()">
+        <option [ngValue]="3">3 Posts par page</option>
+        <option [ngValue]="6">6 Posts par page</option>
+        <option [ngValue]="9">9 Posts par page</option>
+        <option [ngValue]="18">18 Posts par page</option>
+      </select>
+    </div>
+  </div>
+</ng-container>
