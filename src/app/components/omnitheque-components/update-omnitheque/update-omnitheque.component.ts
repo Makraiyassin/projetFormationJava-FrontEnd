@@ -59,7 +59,6 @@ export class UpdateOmnithequeComponent implements OnInit {
   }
 
   update() {
-    console.log(this.omnithequeForm.value)
     this._omnithequeService.update(this.omnithequeForm.value).subscribe(data => {
       this._router.navigate([`/omnitheque/${data.id}`]);
     })

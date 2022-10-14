@@ -36,7 +36,6 @@ export class CreatePostComponent implements OnInit {
       },
       (error:any,result:any)=> {
         if (!error && result && result.event === "success") {
-          console.log(result.info.url)
           this.postForm.patchValue({image: result.info.url})
         }
       }

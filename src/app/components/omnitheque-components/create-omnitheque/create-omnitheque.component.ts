@@ -74,6 +74,5 @@ export class CreateOmnithequeComponent implements OnInit {
     );
 
     myWidget.open()
-    console.log(this.omnithequeForm.value)
   }
 }

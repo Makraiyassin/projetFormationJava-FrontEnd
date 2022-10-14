@@ -92,7 +92,7 @@ export class InfosProfileComponent implements OnInit {
     else{
       this.formValide = true;
       this.editPasswordActive = false;
-      this._userService.update(this.editPasswordForm.value).subscribe(data =>{console.log(data)});
+      this._userService.update(this.editPasswordForm.value).subscribe(data =>{}, error => {console.log(error)});
 
     }
   }

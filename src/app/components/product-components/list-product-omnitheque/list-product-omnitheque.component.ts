@@ -62,7 +62,7 @@ export class ListProductOmnithequeComponent implements OnInit {
       result => {
       },
       error => {
-        console.log(error.error.message)
+        console.log(error)
       },
     );
 
