@@ -1,5 +1,5 @@
 <ng-container *ngIf="posts || omnitheque">
-  <div *ngIf="omnitheque?.id == user?.omnitheque?.id" class="container justify-content-center">
+  <div *ngIf="omnitheque?.id == user?.omnitheque?.id && currentPage == 'omnitheque'" class="container justify-content-center">
     <a  routerLink="createPost" class="btn btn-outline-primary">publier une anonce</a>
   </div>
 

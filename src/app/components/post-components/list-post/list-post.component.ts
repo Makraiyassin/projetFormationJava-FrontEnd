@@ -26,6 +26,7 @@ export class ListPostComponent implements OnInit {
   user!: IUser;
   postList !: IPost[];
   posts !: IPost[];
+  currentPage : String = this._router.url.split("/")[1];
 
   page = 1;
   pageSize = 3;
@@ -35,7 +36,7 @@ export class ListPostComponent implements OnInit {
     this._userService.getUser().subscribe(data => {
       this.user = data;
     })
-    if(this._router.url.split("/")[1] == "omnitheque"){
+    if(this.currentPage == "omnitheque"){
       if(this._route.snapshot.parent ){
         this._omnithequeService.getOne(this._route.snapshot.parent.params["id"]).subscribe( data =>{
           this.postList = data.postList
