@@ -22,6 +22,7 @@ export class UpdatePostComponent implements OnInit {
     id: new FormControl(),
     title: new FormControl("", [Validators.required]),
     content: new FormControl("", [Validators.required]),
+    date: new FormControl("", [Validators.required]),
     image: new FormControl("", [Validators.required]),
   })
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class UpdatePostComponent implements OnInit {
       this.postForm.patchValue({
         id: data.id,
         title: data.title,
+        date: data.date,
         content: data.content,
         image: data.image
       })

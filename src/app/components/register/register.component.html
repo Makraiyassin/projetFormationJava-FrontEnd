@@ -70,6 +70,10 @@
     <div *ngIf="!formValide &&!registerForm.controls.confirmPassword.valid && !registerForm.controls.confirmPassword.getError('noMatch') " class="form-text text-danger">le mot de passe doit contenir 6 carractère dont au moins une lettre et un chiffre</div>
     <div *ngIf="registerForm.controls.confirmPassword.getError('noMatch')" class="form-text text-danger">les mot de pass ne correspondent pas</div>
   </div>
-    <div *ngIf="registerError" class="form-text text-danger">{{registerError.message}}</div>
+    <div *ngIf="registerError" >
+      <p *ngFor="let error of registerError | keyvalue" class="form-text text-danger">
+        {{error.key}} : {{error.value}}
+      </p>
+    </div>
   <button (click)="register()" class="btn btn-primary">s'enregistrer</button>
 </form>
