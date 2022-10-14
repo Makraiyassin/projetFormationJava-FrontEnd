@@ -8,6 +8,9 @@ import {
 } from "./components/product-components/list-product-catalogue/list-product-catalogue.component";
 import {OnePostComponent} from "./components/post-components/one-post/one-post.component";
 import {VerifyEmailComponent} from "./components/verify-email/verify-email.component";
+import {ContactComponent} from "./components/contact/contact.component";
+import {AboutComponent} from "./components/about/about.component";
+import {PrivacyPolicyComponent} from "./components/privacy-policy/privacy-policy.component";
 
 const routes: Routes = [
   {path:"",component:AccueilComponent},
@@ -19,6 +22,8 @@ const routes: Routes = [
   { path: 'profile', loadChildren: () => import("./pages/profile/profile.module").then(m => m.ProfileModule)},
   {path:"register", component: RegisterComponent},
   {path:"verify/:code", component: VerifyEmailComponent},
+  {path:"contact", component: ContactComponent},
+  {path:"privacyPolicy", component: PrivacyPolicyComponent},
 
 ];
 

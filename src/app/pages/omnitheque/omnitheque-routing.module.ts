@@ -13,23 +13,24 @@ import {ListPostComponent} from "../../components/post-components/list-post/list
 import {CreatePostComponent} from "../../components/post-components/create-post/create-post.component";
 import {UpdatePostComponent} from "../../components/post-components/update-post/update-post.component";
 import {OnePostComponent} from "../../components/post-components/one-post/one-post.component";
+import {AboutComponent} from "../../components/about/about.component";
 
 const routes: Routes = [
   { path: ":id", component: OmnithequeComponent, children: [
     { path: "update", component: UpdateOmnithequeComponent },
     { path: "", component: ListProductOmnithequeComponent },
     { path: "publications", component: ListPostComponent },
-      {path:"publications/update/:id", component: UpdatePostComponent},
+      { path:"publications/update/:id", component: UpdatePostComponent},
       { path: "publications/createPost", component: CreatePostComponent },
-      {path:"publications/publication/:id",component:OnePostComponent},
-
-      { path: "products", component: ListProductOmnithequeComponent },
-    { path: "products/createProduct", component: CreateProductComponent },
-    {path:"products/update/:id", component: UpdateProductComponent},
+      { path:"publications/publication/:id",component:OnePostComponent},
+    { path: "products", component: ListProductOmnithequeComponent },
+      { path: "products/createProduct", component: CreateProductComponent },
+      {path:"products/update/:id", component: UpdateProductComponent},
       { path: "createProduct", component: CreateProductComponent },
       {path:"update/:id", component: UpdateProductComponent},
     {path:"borrows", component: OmnithequeListBorrowComponent},
-    { path: "borrows/product/:id", component: OneProductComponent },
+      { path: "borrows/product/:id", component: OneProductComponent },
+    { path: "about/:id", component: AboutComponent },
   ]
 }];
 
