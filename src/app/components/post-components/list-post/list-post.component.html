@@ -18,11 +18,13 @@
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt">{{post.content}}</div>
           <ul class="postcard__tagbox">
-            <li class="tag__item play blue">
-              <a *ngIf="omnitheque?.id != user?.omnitheque?.id" routerLink="/omnitheque/{{post.omnithequeId}}/publications"><i class="fas fa-play mr-2"></i>voir l'omnitheque</a>
-              <a  *ngIf="omnitheque?.id == user?.omnitheque?.id" routerLink="/omnitheque/{{post.omnithequeId}}/publications/update/{{post.id}}"><i class="fas fa-play mr-2"></i>modifier</a>
+            <li *ngIf="post.omnithequeId != user?.omnitheque?.id && currentPage != 'omnitheque'" class="tag__item play blue">
+              <a  routerLink="/omnitheque/{{post.omnithequeId}}/publications"><i class="fas fa-play mr-2"></i>voir l'omnitheque</a>
             </li>
-            <li *ngIf="omnitheque?.id == user?.omnitheque?.id"class="tag__item play blue">
+            <li *ngIf="post.omnithequeId == user?.omnitheque?.id" class="tag__item play blue">
+              <a routerLink="/omnitheque/{{post.omnithequeId}}/publications/update/{{post.id}}"><i class="fas fa-play mr-2"></i>modifier</a>
+            </li>
+            <li *ngIf="post.omnithequeId == user?.omnitheque?.id"class="tag__item play blue">
               <a (click)="delete(post.id)"><i class="fas fa-play mr-2" ></i>supprimer</a>
             </li>
             <li class="tag__item play blue">
