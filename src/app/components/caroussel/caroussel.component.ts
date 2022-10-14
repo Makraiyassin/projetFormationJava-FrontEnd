@@ -34,12 +34,4 @@ export class CarousselComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-  // ngAfterViewChecked(): void{
-  //   document.getElementsByClassName("carousel-control-prev-icon")[0].innerHTML='<img src="assets/images/previous.png" aria-hidden="true" class="carousel-control-prev-icon">'
-  //   document.getElementsByClassName("carousel-control-next-icon")[0].innerHTML='<img src="assets/images/next.png" aria-hidden="true" class="carousel-control-prev-icon">'
-  //   // document.getElementsByClassName("carousel-control-prev-icon")[0].innerHTML='<h1>AAAAAAAAAAA</h1>'
-  // }
-
-
 }

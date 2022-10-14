@@ -25,7 +25,7 @@ export class CreatePostComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.postForm.patchValue({image:"/assets/publication.png"})
+    this.postForm.patchValue({image:"http://res.cloudinary.com/dsuyae7y8/image/upload/v1665739816/o7awf1sqh62q0nolkcss.png"})
   }
 
   cloudinaryGo(){
@@ -36,6 +36,7 @@ export class CreatePostComponent implements OnInit {
       },
       (error:any,result:any)=> {
         if (!error && result && result.event === "success") {
+          console.log(result.info.url)
           this.postForm.patchValue({image: result.info.url})
         }
       }

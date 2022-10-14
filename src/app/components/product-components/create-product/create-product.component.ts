@@ -32,7 +32,7 @@ export class CreateProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.categories = Categories
-    this.productForm.patchValue({image:"/assets/produit.png"})
+    this.productForm.patchValue({image:"http://res.cloudinary.com/dsuyae7y8/image/upload/v1665739795/khbagudgo7zusq9rz2rz.png"})
   }
 
   cloudinaryGo(){

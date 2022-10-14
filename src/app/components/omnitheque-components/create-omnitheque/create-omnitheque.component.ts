@@ -42,7 +42,7 @@ export class CreateOmnithequeComponent implements OnInit {
         this.omnithequeForm.patchValue({
           phone: data.phone,
           email: data.email,
-          image: "/assets/omnitheque.png"
+          image: "http://res.cloudinary.com/dsuyae7y8/image/upload/v1665739773/tv0ib1qaln5symsildes.png"
         })
         this.addressForm.patchValue({
           street: data.address.street,
