@@ -11,46 +11,52 @@ import {SessionService} from "../../services/session.service";
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm = new FormGroup({
-      firstName: new FormControl("", [Validators.required]),
-      lastName: new FormControl("", [Validators.required]),
-      birthdate: new FormControl("", [Validators.required]),
-      address: new FormGroup({
-        street: new FormControl("", [Validators.required]),
-        number: new FormControl("", [Validators.required]),
-        cp: new FormControl("", [Validators.required]),
-        city: new FormControl("", [Validators.required]),
-        country: new FormControl("", [Validators.required]),
-      }),
-      phone: new FormControl("", [Validators.required]),
-      email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [Validators.required]),
-      confirmPassword: new FormControl("", [Validators.required]),
-    }
-  )
-
-  formValide : boolean = true;
-
   constructor(
     private auth : AuthService,
     private session : SessionService,
     private router : Router
   ) { }
 
+  registerForm = new FormGroup({
+      firstName: new FormControl("", [Validators.required]),
+      lastName: new FormControl("", [Validators.required]),
+      birthdate: new FormControl("", [Validators.required,Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]),
+      address: new FormGroup({
+        street: new FormControl("", [Validators.required]),
+        number: new FormControl("", [Validators.required]),
+        cp: new FormControl("", [Validators.required]),
+        city: new FormControl("", [Validators.required]),
+        country: new FormControl("Belgique", [Validators.required]),
+      }),
+      phone: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")]),
+      confirmPassword: new FormControl("", [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")]),
+    }
+  )
+
+  formValide : boolean = true;
+  registerError !: any;
+
   ngOnInit(): void {
   }
 
   register() {
     if(this.registerFormValidation()){
-      this.auth.register(this.registerForm.value).subscribe(data => {
-        this.auth.login(this.registerForm.value).subscribe(data => {
-          this.session.login(data.token)
-          this.router.navigate(["/"]);
-        })
-      })
+      this.auth.register(this.registerForm.value).subscribe(
+        ()=>{
+          this.auth.login(this.registerForm.value).subscribe(
+            data => {
+              this.session.login(data.token)
+              this.router.navigate(["/"])
+            })
+        },
+        (e) => {
+          this.registerError = e.error
+        }
+      )
     }
   }
-
   passwordvalidation(): boolean {
     if(this.registerForm.value.password !== this.registerForm.value.confirmPassword){
       this.registerForm.controls.password.setValue("")

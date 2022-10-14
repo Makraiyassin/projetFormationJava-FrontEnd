@@ -1,3 +1,3 @@
-export interface TokenDto {
+export interface IToken {
   token: String;
 }
