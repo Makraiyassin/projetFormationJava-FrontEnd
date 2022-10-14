@@ -13,7 +13,7 @@
   <div  class="mb-3">
     <label for="birthdate" class="form-label">Date de naissance</label>
     <!--TODO : calcul birthdate min (ojd - 110 ans) max (ojd - 7ans)-->
-    <input formControlName="birthdate" type="date" min="1912-01-01" max="2020-12-31" class="form-control" id="birthdate">
+    <input formControlName="birthdate" type="date" min="1912-01-01" max="2015-12-31" class="form-control" id="birthdate">
     <div *ngIf="!formValide &&!registerForm.controls.birthdate.valid " class="form-text text-danger">la date de naissance est invalid</div>
   </div>
 

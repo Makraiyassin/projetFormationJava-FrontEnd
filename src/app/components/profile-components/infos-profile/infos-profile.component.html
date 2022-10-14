@@ -26,8 +26,10 @@
             <div *ngIf="editPasswordActive" class="row" [formGroup]="editPasswordForm">
               <div class="mb-2">
                 <input formControlName="password" type="password" class="form-control" id="password" placeholder="nouveau mot de pass">
+                <div *ngIf="!editPasswordForm.controls.password.valid" class="form-text text-danger">le mot de passe doit contenir 6 carractère dont au moins une lettre et un chiffre</div>
                 <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword"  placeholder="confirmer mot de pass">
                 <div *ngIf="editPasswordForm.controls.confirmPassword.getError('noMatch')" id="erreur_password" class="form-text text-danger">les mot de pass ne correspondent pas</div>
+                <div *ngIf="!editPasswordForm.controls.confirmPassword.valid" class="form-text text-danger">le mot de passe doit contenir 6 carractère dont au moins une lettre et un chiffre</div>
               </div>
               <div class="col-sm-6">
                 <button class="btn btn-primary " (click)="cancelEditPassword()">Annuler</button>

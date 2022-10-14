@@ -32,8 +32,8 @@ export class InfosProfileComponent implements OnInit {
   editPasswordActive : boolean = false
 
   editPasswordForm = new FormGroup({
-      password: new FormControl("", [Validators.required]),
-      confirmPassword: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")]),
+      confirmPassword: new FormControl("", [Validators.required,Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$") ]),
     }
   )
 
@@ -78,7 +78,6 @@ export class InfosProfileComponent implements OnInit {
       this.editPasswordForm.controls.password.setValue("")
       this.editPasswordForm.controls.confirmPassword.setValue("")
       this.editPasswordForm.controls.confirmPassword.setErrors({'noMatch': true})
-      console.log(this.editPasswordForm.value)
     }else{
       this.editPasswordActive = false
       this._userService.update(this.editPasswordForm.value).subscribe(data =>{console.log(data)})

@@ -37,7 +37,7 @@ export class UpdatePostComponent implements OnInit {
 
   edit(){
     this._postService.update(this.postForm.value).subscribe(data => {
-      this._router.navigate([`/omnitheque/${data.omnithequeId}`]);
+      this._router.navigate([`/omnitheque/${data.omnithequeId}/publications`]);
     })
   }
 

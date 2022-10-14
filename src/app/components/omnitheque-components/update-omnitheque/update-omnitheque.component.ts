@@ -43,8 +43,8 @@ export class UpdateOmnithequeComponent implements OnInit {
         this.omnithequeForm.patchValue({
           id: data.omnitheque.id,
           name: data.omnitheque.name,
-          phone: data.phone,
-          email: data.email,
+          phone: data.omnitheque.phone,
+          email: data.omnitheque.email,
           image: data.omnitheque.image
         })
         this.addressForm.patchValue({
