@@ -11,10 +11,10 @@ import { UserService } from 'src/app/services/user.service';
 export class InfosProfileComponent implements OnInit {
 
 
-  user !: IUser;
   constructor(private _userService : UserService) {
   }
 
+  user !: IUser;
   editActive : boolean = false
 
   editForm = new FormGroup({
@@ -29,6 +29,7 @@ export class InfosProfileComponent implements OnInit {
       phone: new FormControl(),
     }
   )
+
   editPasswordActive : boolean = false
 
   editPasswordForm = new FormGroup({
@@ -36,6 +37,9 @@ export class InfosProfileComponent implements OnInit {
       confirmPassword: new FormControl("", [Validators.required,Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$") ]),
     }
   )
+
+  formValide : boolean = true;
+
 
   ngOnInit(): void {
     this._userService.getUser().subscribe(
@@ -74,18 +78,28 @@ export class InfosProfileComponent implements OnInit {
     this.editPasswordActive = true
   }
   submitEditPassword(){
-    if(this.editPasswordForm.value.password !== this.editPasswordForm.value.confirmPassword){
-      this.editPasswordForm.controls.password.setValue("")
-      this.editPasswordForm.controls.confirmPassword.setValue("")
-      this.editPasswordForm.controls.confirmPassword.setErrors({'noMatch': true})
-    }else{
-      this.editPasswordActive = false
-      this._userService.update(this.editPasswordForm.value).subscribe(data =>{console.log(data)})
+    if(this.editPasswordForm.value.password !== this.editPasswordForm.value.confirmPassword ){
+      this.editPasswordForm.controls.password.setValue("");
+      this.editPasswordForm.controls.confirmPassword.setValue("");
+      this.editPasswordForm.controls.confirmPassword.setErrors({'noMatch': true});
+      this.formValide = false;
+    }
+    else if(this.editPasswordForm.controls.confirmPassword.invalid || this.editPasswordForm.controls.password.invalid){
+      this.editPasswordForm.controls.password.setValue("");
+      this.editPasswordForm.controls.confirmPassword.setValue("");
+      this.formValide = false;
+    }
+    else{
+      this.formValide = true;
+      this.editPasswordActive = false;
+      this._userService.update(this.editPasswordForm.value).subscribe(data =>{console.log(data)});
 
     }
   }
   cancelEditPassword(){
     this.editPasswordActive = false
   }
+
+
 
 }
