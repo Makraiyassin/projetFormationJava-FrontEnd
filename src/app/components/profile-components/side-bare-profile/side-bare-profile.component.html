@@ -1,28 +1,52 @@
-<div *ngIf="user"  class="mySideBar  d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;" >
-  <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-    <span class="fs-4">Bienvenue {{user.firstName}} !</span>
-  </a>
-  <hr>
-  <ul class="nav nav-pills flex-column mb-auto">
-    <li class="nav-item">
-      <a class="nav-link text-white" aria-current="page" routerLinkActive="active" routerLink="compte">
-        mon compte
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white" routerLinkActive="active" routerLink="borrows">
-        mes emprunts
-      </a>
-    </li>
-    <li class="nav-item">
-      <a *ngIf="user.omnitheque" class="nav-link text-white" routerLink="/omnitheque/{{user.omnitheque.id}}" aria-current="page">
-        Mon omnitheque
-      </a>
-      <a  *ngIf="!user.omnitheque" class="nav-link text-white" routerLinkActive="active" routerLink="omnitheque/create" aria-current="page">
-        Créer mon omnitheque
-      </a>
-    </li>
-  </ul>
+<div class="col-lg-3 responsive-Display">
+  <div *ngIf="user"  class="myResponsiveSideBar text-bg-dark" >
+    <ul class="nav nav-pills mb-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" aria-current="page" routerLinkActive="active" routerLink="compte">
+          mon compte
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLinkActive="active" routerLink="borrows">
+          mes emprunts
+        </a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="user.omnitheque" class="nav-link text-white" routerLink="/omnitheque/{{user.omnitheque.id}}" aria-current="page">
+          Mon omnitheque
+        </a>
+        <a  *ngIf="!user.omnitheque" class="nav-link text-white" routerLinkActive="active" routerLink="omnitheque/create" aria-current="page">
+          Créer mon omnitheque
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
-
-
+<div class="col-lg-3 responsive-noDisplay">
+  <div *ngIf="user"  class="mySideBar  d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;" >
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="fs-4">Bienvenue {{user.firstName}} !</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" aria-current="page" routerLinkActive="active" routerLink="compte">
+          mon compte
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLinkActive="active" routerLink="borrows">
+          mes emprunts
+        </a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="user.omnitheque" class="nav-link text-white" routerLink="/omnitheque/{{user.omnitheque.id}}" aria-current="page">
+          Mon omnitheque
+        </a>
+        <a  *ngIf="!user.omnitheque" class="nav-link text-white" routerLinkActive="active" routerLink="omnitheque/create" aria-current="page">
+          Créer mon omnitheque
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
