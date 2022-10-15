@@ -60,6 +60,7 @@ export class ListProductOmnithequeComponent implements OnInit {
   borrow(productId : number ){
     this._borrowService.create(this.omnitheque.id,productId).subscribe(
       result => {
+
       },
       error => {
         console.log(error)
