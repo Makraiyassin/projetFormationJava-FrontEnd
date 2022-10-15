@@ -3,7 +3,7 @@ import {IUser} from "../../../models/IUser";
 import {IOmnitheque} from "../../../models/IOmnitheque";
 import {OmnithequeService} from "../../../services/omnitheque.service";
 import {UserService} from "../../../services/user.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {IProduct} from "../../../models/IProduct";
 import {ProductService} from "../../../services/product.service";
 import {BorrowService} from "../../../services/borrow.service";
@@ -20,6 +20,7 @@ export class ListProductOmnithequeComponent implements OnInit {
     private _omnithequeService : OmnithequeService,
     private _userService : UserService,
     private _route: ActivatedRoute,
+    private _router : Router,
     private _productService : ProductService,
     private _borrowService: BorrowService
   ) { }
@@ -57,17 +58,21 @@ export class ListProductOmnithequeComponent implements OnInit {
     }
   }
 
-  borrow(productId : number ){
-    this._borrowService.create(this.omnitheque.id,productId).subscribe(
-      result => {
+  borrow(product : IProduct ){
+    if(confirm(`êtes vous sûr de vouloir emprunter "${product.name}"?`)){
+      this._borrowService.create(this.omnitheque.id,product.id).subscribe(
+        result => {
+          this.ngOnInit()
+        },
+        error => {
+          console.log(error)
+        },
+      );
+    }
+  }
 
-      },
-      error => {
-        console.log(error)
-      },
-    );
-
-    this.refreshProducts()
+  borrowsProgress(product : IProduct): number {
+    return product.borrowList.filter(b=>!b.returned).length
   }
 
   checkBorrow(productId : number) : boolean {

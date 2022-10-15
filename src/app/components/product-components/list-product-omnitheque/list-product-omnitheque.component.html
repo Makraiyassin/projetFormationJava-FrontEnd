@@ -31,7 +31,11 @@
       </thead>
       <tbody>
       <tr *ngFor="let product of products ">
-        <ng-container *ngIf="product.quantity">
+        <ng-container *ngIf="
+          product.quantity &&
+          (borrowsProgress(product)<product.quantity ||
+          omnitheque?.id == user?.omnitheque?.id )
+        ">
           <td><img width="100px" height="100px" src="{{ product.image != 'string' ? product.image : 'http://res.cloudinary.com/dsuyae7y8/image/upload/v1665739795/khbagudgo7zusq9rz2rz.png'}}"></td>
           <td><div>{{ product.name }}</div></td>
           <td> <div>{{tradCategory(product.category)}}</div> </td>
@@ -39,7 +43,7 @@
           <td *ngIf=" omnitheque.id == user?.omnitheque?.id"  class="text-center">{{ product.quantity}}</td>
           <td>
             <ng-container *ngIf=" omnitheque.id != user?.omnitheque?.id">
-              <a *ngIf="checkBorrow(product.id)" (click)="borrow(product.id)" class="btn btn-primary">emprunter</a>
+              <a *ngIf="checkBorrow(product.id)" (click)="borrow(product)" class="btn btn-primary">emprunter</a>
               <a *ngIf="!checkBorrow(product.id)" routerLink="/profile/borrows" class="text-success">emprunt en cours</a>
             </ng-container>
             <ng-container *ngIf="omnitheque.id == user?.omnitheque?.id" >

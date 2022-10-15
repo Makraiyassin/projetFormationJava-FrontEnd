@@ -32,7 +32,7 @@
         <td>{{borrow.product ? borrow.product.name : borrow.productId}} <a routerLink="product/{{borrow.productId}}">🔍</a></td>
         <td *ngIf="!borrow.returned">
           <button class="btn btn-primary m-2">prolonger</button>
-          <button class="btn btn-primary" (click)="return(borrow.id)">retour</button>
+          <button class="btn btn-primary" (click)="return(borrow)">retour</button>
         </td>
         <td *ngIf="borrow.returned">OK</td>
       </tr>

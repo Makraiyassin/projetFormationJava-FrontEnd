@@ -19,9 +19,14 @@ export class OnePostComponent implements OnInit {
 
   urlSegments : string [] = this._router.url.split("/");
   post !: IPost;
+  postContent !: String [];
 
   ngOnInit(): void {
-    this._postService.getOne(this._route.snapshot.params["id"]).subscribe(data => this.post = data );
+    this._postService.getOne(this._route.snapshot.params["id"]).subscribe(data => {
+      this.post = data;
+      this.postContent = data.content.split("\n");
+      console.log(this.postContent);
+    } );
   }
 
   backFromOmni(){

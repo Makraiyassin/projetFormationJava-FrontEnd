@@ -2,7 +2,9 @@
   <div *ngIf="post" class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
     <div class="col-12 col-lg-7 text-center">
       <h2 class="display-4 lh-1 mb-4 text-center">{{post.title}}</h2>
-      <p class="lead fw-normal text-muted mb-5 mb-lg-0 description-500">{{post.content}}</p>
+      <div class="lead fw-normal text-muted mb-5 mb-lg-0 description-500" >
+        <p *ngFor="let post of postContent">{{post}}</p>
+      </div>
       <button *ngIf="urlSegments[1] == 'omnitheque' " class="btn btn-primary mt-5" (click)="backFromOmni()">retour à l'omnitheque</button>
       <button *ngIf="urlSegments[1] == 'publication' " class="btn btn-primary mt-5" (click)="backFromHome()">retour à l'accueil</button>
     </div>

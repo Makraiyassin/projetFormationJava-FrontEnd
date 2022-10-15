@@ -53,10 +53,12 @@ export class OmnithequeListBorrowComponent implements OnInit {
   refreshBorrows() {
     this.borrows = this.omnitheque.borrowList.slice((this.page-1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize)
   }
-  return(borrowId : number) {
-    this._borrowService.return(borrowId).subscribe(data=>{
-      this.borrows.find( b => b.id === borrowId)!.returned = true
-    });
+  return(borrow : IBorrow) {
+    if(confirm(`êtes vous sûr de vouloir valider le retour de ${borrow.product.name}?`)){
+      this._borrowService.return(borrow.id).subscribe(data=>{
+        this.borrows.find( b => b.id === borrow.id)!.returned = true
+      });
+    }
   }
 
 }
