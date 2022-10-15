@@ -2,6 +2,10 @@
   min-height: 100vh;
   height: 100%;
 }
+.responsive-noDisplay{
+  min-height: 100vh;
+  height: 100%;
+}
 .myResponsiveSideBar{
   min-height: auto;
   height: auto;

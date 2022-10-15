@@ -35,6 +35,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     AboutComponent,
     ContactComponent,
     PrivacyPolicyComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

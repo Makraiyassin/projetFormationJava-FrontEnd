@@ -9,7 +9,6 @@ import {
 import {OnePostComponent} from "./components/post-components/one-post/one-post.component";
 import {VerifyEmailComponent} from "./components/verify-email/verify-email.component";
 import {ContactComponent} from "./components/contact/contact.component";
-import {AboutComponent} from "./components/about/about.component";
 import {PrivacyPolicyComponent} from "./components/privacy-policy/privacy-policy.component";
 
 const routes: Routes = [
