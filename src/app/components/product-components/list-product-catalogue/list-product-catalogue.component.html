@@ -1,6 +1,4 @@
 <div class="container mt-2">
-
-
   <div id="filters" class="my-2 bg-light p-2" [formGroup]="filters">
     <div class="d-lg-flex align-items-lg-center pt-2">
       <div class="form-check form-switch mx-2">
@@ -58,6 +56,7 @@
       </div>
     </div>
   </div>
+  <div *ngIf="!products || products.length == 0" class=" container text-center"> <h1>Aucun resultat n'a été trouvé...</h1> </div>
 
 
   <div *ngIf="collectionSize" class="d-flex justify-content-between p-2 mt-3">
