@@ -1,15 +1,3 @@
-
-<div class="responsive-Display">
-  <ul>
-    <li><a routerLink="/profile/compte">mon compte</a></li>
-    <li><a  routerLink="/profile/borrows">mes emprunts</a></li>
-    <li>
-      <a *ngIf="omnitheque != null" routerLink="/omnitheque/{{omnitheque.id}}">mon omnitheque</a>
-      <a *ngIf="omnitheque == null" routerLink="/profile/omnitheque/create">Créer mon omnitheque</a>
-    </li>
-  </ul>
-</div>
-
 <div *ngIf="borrows">
 
   <div *ngIf="borrows.length>0">

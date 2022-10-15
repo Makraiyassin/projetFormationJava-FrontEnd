@@ -1,33 +1,70 @@
-<div *ngIf="omnitheque" class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark mySideBar" style="width: 280px;" >
-  <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-    <span class="fs-4">{{omnitheque.name}}</span>
-  </a>
-  <hr>
-  <ul class="nav nav-pills flex-column mb-auto">
-    <li class="nav-item">
-      <a class="nav-link text-white"  aria-current="page" routerLinkActive="active" routerLink="publications" >
-        Publications
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white" routerLinkActive="active" routerLink="products">
-        Catalogue
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white"routerLinkActive="active" routerLink="about/{{omnitheque.id}}">
-        à propos de nous
-      </a>
-    </li>
-    <li class="nav-item">
-      <a *ngIf="user && omnitheque.id == user.omnitheque?.id" class="nav-link text-white"  routerLinkActive="active" routerLink="borrows">
-        emprunts
-      </a>
-    </li>
-    <li *ngIf="user?.omnitheque"  class="nav-item">
-      <a *ngIf="omnitheque.id == user.omnitheque.id" class="nav-link text-white" routerLinkActive="active" routerLink="update">
-        modifier infos
-      </a>
-    </li>
-  </ul>
+<div class="responsive-Display">
+  <div *ngIf="omnitheque" class="myResponsiveSideBar text-bg-dark">
+    <ul class="nav nav-pills mb-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white"  aria-current="page" routerLinkActive="active" routerLink="publications" >
+          Publications
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLinkActive="active" routerLink="products">
+          Catalogue
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white"routerLinkActive="active" routerLink="about/{{omnitheque.id}}">
+          à propos de nous
+        </a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="user && omnitheque.id == user.omnitheque?.id" class="nav-link text-white"  routerLinkActive="active" routerLink="borrows">
+          emprunts
+        </a>
+      </li>
+      <li *ngIf="user?.omnitheque"  class="nav-item">
+        <a *ngIf="omnitheque.id == user.omnitheque.id" class="nav-link text-white" routerLinkActive="active" routerLink="update">
+          modifier infos
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
+<div class="col-lg-3 responsive-noDisplay">
+  <div *ngIf="omnitheque" class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark mySideBar" style="width: 280px;" >
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="fs-4">{{omnitheque.name}}</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white"  aria-current="page" routerLinkActive="active" routerLink="publications" >
+          Publications
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLinkActive="active" routerLink="products">
+          Catalogue
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white"routerLinkActive="active" routerLink="about/{{omnitheque.id}}">
+          à propos de nous
+        </a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="user && omnitheque.id == user.omnitheque?.id" class="nav-link text-white"  routerLinkActive="active" routerLink="borrows">
+          emprunts
+        </a>
+      </li>
+      <li *ngIf="user?.omnitheque"  class="nav-item">
+        <a *ngIf="omnitheque.id == user.omnitheque.id" class="nav-link text-white" routerLinkActive="active" routerLink="update">
+          modifier infos
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+

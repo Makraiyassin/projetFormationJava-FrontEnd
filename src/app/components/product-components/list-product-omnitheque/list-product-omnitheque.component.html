@@ -1,16 +1,4 @@
 
-<div class="responsive-Display">
-  <ul>
-    <li><a>Actualité</a></li>
-    <li><a>Catalogue</a></li>
-    <li><a>à propos de nous</a></li>
-    <li *ngIf="omnitheque && user?.omnitheque">
-      <a *ngIf="omnitheque.id == user.omnitheque.id" routerLink="update">modifier infos</a>
-    </li>
-  </ul>
-</div>
-
-
 <div *ngIf="omnitheque?.id == user?.omnitheque?.id" class="container justify-content-center">
   <a  routerLink="createProduct" class="btn btn-outline-primary">ajouter un produit</a>
 </div>
