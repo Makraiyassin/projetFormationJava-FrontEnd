@@ -71,7 +71,7 @@
     <div *ngIf="registerForm.controls.confirmPassword.getError('noMatch')" class="form-text text-danger">les mot de pass ne correspondent pas</div>
   </div>
     <div *ngIf="registerError" >
-      <p class="form-text text-danger">{{registerError.message}}</p>
+      <p class="form-text text-danger" *ngFor="let error of registerError  | keyvalue">{{error.key}} : {{error.value}}</p>
     </div>
   <button (click)="register()" class="btn btn-primary">s'enregistrer</button>
 </form>

@@ -8,6 +8,10 @@ table td div {
   overflow-y: auto ;
 }
 
+table{
+  max-width: 90%;
+}
+
 .description{
   text-align: justify !important;
   margin: auto;

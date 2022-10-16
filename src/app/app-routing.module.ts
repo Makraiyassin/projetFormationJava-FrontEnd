@@ -10,6 +10,7 @@ import {OnePostComponent} from "./components/post-components/one-post/one-post.c
 import {VerifyEmailComponent} from "./components/verify-email/verify-email.component";
 import {ContactComponent} from "./components/contact/contact.component";
 import {PrivacyPolicyComponent} from "./components/privacy-policy/privacy-policy.component";
+import {InfoUserComponent} from "./components/info-user/info-user.component";
 
 const routes: Routes = [
   {path:"",component:AccueilComponent},

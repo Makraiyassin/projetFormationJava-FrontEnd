@@ -36,6 +36,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { InfoUserComponent } from './components/info-user/info-user.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ContactComponent,
     PrivacyPolicyComponent,
     FooterComponent,
+    InfoUserComponent,
   ],
   imports: [
     BrowserModule,

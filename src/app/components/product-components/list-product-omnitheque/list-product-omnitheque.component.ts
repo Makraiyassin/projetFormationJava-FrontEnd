@@ -65,6 +65,7 @@ export class ListProductOmnithequeComponent implements OnInit {
           this.ngOnInit()
         },
         error => {
+          alert("Vous devez être connecter pour emprunter emprunter "+product.name)
           console.log(error)
         },
       );

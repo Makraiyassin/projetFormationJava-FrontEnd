@@ -2,15 +2,16 @@
 
   <div *ngIf="borrows.length>0">
 
-    <table   class="table table-striped">
+    <table   class="table table-striped text-center">
       <thead>
-      <tr>
-        <th scope="col">id </th>
-        <th scope="col">start </th>
-        <th scope="col">end </th>
-        <th scope="col">produit </th>
-        <th scope="col"> </th>
-      </tr>
+        <tr>
+          <th scope="col">id </th>
+          <th scope="col">Date d'emprunt </th>
+          <th scope="col">Date limite de Retour </th>
+          <th scope="col">Produit </th>
+          <th scope="col">Locataire</th>
+          <th scope="col"> </th>
+        </tr>
       </thead>
       <tbody>
       <tr *ngFor="let borrow of borrows ">
@@ -18,6 +19,7 @@
         <td>{{borrow.startBorrow}}</td>
         <td>{{borrow.endBorrow}}</td>
         <td>{{borrow.product ? borrow.product.name : borrow.productId}} <a routerLink="product/{{borrow.productId}}">🔍</a></td>
+        <td > <a routerLink="utilisateur/{{borrow.userId}}">voir({{borrow.userId}})</a></td>
         <td *ngIf="!borrow.returned">
           <button class="btn btn-primary m-2">prolonger</button>
           <button class="btn btn-primary" (click)="return(borrow)">retour</button>

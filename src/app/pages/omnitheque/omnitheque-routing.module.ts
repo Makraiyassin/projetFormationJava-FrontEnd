@@ -14,11 +14,12 @@ import {CreatePostComponent} from "../../components/post-components/create-post/
 import {UpdatePostComponent} from "../../components/post-components/update-post/update-post.component";
 import {OnePostComponent} from "../../components/post-components/one-post/one-post.component";
 import {AboutComponent} from "../../components/about/about.component";
+import {InfoUserComponent} from "../../components/info-user/info-user.component";
 
 const routes: Routes = [
   { path: ":id", component: OmnithequeComponent, children: [
     { path: "update", component: UpdateOmnithequeComponent },
-    { path: "", component: ListProductOmnithequeComponent },
+    { path: "", component: ListPostComponent },
     { path: "publications", component: ListPostComponent },
       { path:"publications/update/:id", component: UpdatePostComponent},
       { path: "publications/createPost", component: CreatePostComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
       {path:"update/:id", component: UpdateProductComponent},
     {path:"borrows", component: OmnithequeListBorrowComponent},
       { path: "borrows/product/:id", component: OneProductComponent },
+      {path:"borrows/utilisateur/:id", component: InfoUserComponent},
     { path: "about/:id", component: AboutComponent },
   ]
 }];

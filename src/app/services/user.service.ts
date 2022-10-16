@@ -34,4 +34,14 @@ export class UserService {
       }
     )
   }
+
+  getInfos(id : number){
+    return this._http.get<IUser>(
+      `${environment.apiUrl}/user/infos?id=${id}`,
+      {
+        headers: new HttpHeaders()
+          .append("Authorization", this.token)
+      }
+    )
+  }
 }
