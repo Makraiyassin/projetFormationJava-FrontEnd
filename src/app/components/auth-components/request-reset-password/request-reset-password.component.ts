@@ -28,4 +28,8 @@ export class RequestResetPasswordComponent implements OnInit {
       }
     );
   }
+
+  back() {
+    this.errorMessage = undefined
+  }
 }
