@@ -2,7 +2,7 @@
   <div *ngIf="omnitheque?.id == user?.omnitheque?.id && currentPage == 'omnitheque'" class="container justify-content-center">
     <a  routerLink="createPost" class="btn btn-outline-primary">publier une anonce</a>
   </div>
-  <div *ngIf="!posts" class="container justify-content-center my-2">
+  <div *ngIf="!posts || posts.length == 0" class="container justify-content-center my-2">
     <h1  class="texte-center">il n'y a aucune publication pour le moment</h1>
   </div>
 
