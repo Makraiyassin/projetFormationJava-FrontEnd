@@ -1,0 +1,23 @@
+<li *ngIf="!token" class="nav-item dropdown ">
+  <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    👤
+  </a>
+
+  <form  [formGroup]=loginForm class="dropdown-menu" style="width: 220px">
+    <input  formControlName="email" name="email" class="form-control dropdown-item" type="email" placeholder="email">
+    <input  formControlName="password" name="password" class="form-control dropdown-item" type="password" placeholder="mot de pass">
+    <button class="dropdown-item text-center" (click)="login()">se connecter</button>
+    <button class="dropdown-item text-center" routerLink="/register">s'enregistrer</button>
+    <button class="dropdown-item text-center" routerLink="/requestResetPassword">mot de passe oublié?</button>
+  </form>
+
+<li  *ngIf="token"  class="nav-item dropdown ">
+  <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    👤
+  </a>
+
+  <ul class="dropdown-menu"  style="width: 220px">
+    <li><a class="dropdown-item" routerLink="/profile">page profil</a></li>
+    <li><a (click)="logout()" class="dropdown-item" href="#">se déconnecter</a></li>
+  </ul>
+</li>

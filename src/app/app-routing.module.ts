@@ -11,6 +11,8 @@ import {VerifyEmailComponent} from "./components/verify-email/verify-email.compo
 import {ContactComponent} from "./components/contact/contact.component";
 import {PrivacyPolicyComponent} from "./components/privacy-policy/privacy-policy.component";
 import {InfoUserComponent} from "./components/info-user/info-user.component";
+import {RequestResetPasswordComponent} from "./components/auth-components/request-reset-password/request-reset-password.component";
+import {ResetPasswordComponent} from "./components/auth-components/reset-password/reset-password.component";
 
 const routes: Routes = [
   {path:"",component:AccueilComponent},
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path:"verify/:code", component: VerifyEmailComponent},
   {path:"contact", component: ContactComponent},
   {path:"privacyPolicy", component: PrivacyPolicyComponent},
+  {path:"requestResetPassword", component: RequestResetPasswordComponent},
+  {path:"resetPassword/:token", component: ResetPasswordComponent},
 
 ];
 

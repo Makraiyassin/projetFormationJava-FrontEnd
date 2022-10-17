@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthComponent } from './components/auth/auth.component';
+import { AuthComponent } from './components/auth-components/auth/auth.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
@@ -37,6 +37,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { InfoUserComponent } from './components/info-user/info-user.component';
+import { RequestResetPasswordComponent } from './components/auth-components/request-reset-password/request-reset-password.component';
+import { ResetPasswordComponent } from './components/auth-components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { InfoUserComponent } from './components/info-user/info-user.component';
     PrivacyPolicyComponent,
     FooterComponent,
     InfoUserComponent,
+    RequestResetPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
